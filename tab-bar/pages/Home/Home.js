@@ -30,6 +30,8 @@ export default function Home() {
         </View>
         
     );
+
+    /*teste*/
 }
 
 const styles = StyleSheet.create({
