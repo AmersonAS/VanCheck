@@ -15,4 +15,7 @@ export default function App() {
     </NavigationContainer>
   );
 }
-/*testando */
+/*testando 
+
+pulga de bunda*/
+
