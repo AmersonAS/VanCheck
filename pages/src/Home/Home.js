@@ -33,7 +33,8 @@ export default function Home() {
 
 };
 
-//algu
+//push
+
 
 const styles = StyleSheet.create({
     container:{
