@@ -33,6 +33,8 @@ export default function Home() {
 
 };
 
+//algu
+
 const styles = StyleSheet.create({
     container:{
         flex: 1,
