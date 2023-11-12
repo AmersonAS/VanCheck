@@ -1,8 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
-import Home from './Home/Home'
-import Options from './Options/Options'
-import Profile from './Profile/Profile'
+import Home from './Home/Home.js'
+import Options from './Options/Options.js'
+import Profile from './Profile/Profile.js'
 
 import {Ionicons} from '@expo/vector-icons'
 

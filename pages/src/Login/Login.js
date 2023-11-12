@@ -1,5 +1,5 @@
 
-import { Image, Button, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import { Image, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Login() {
@@ -8,19 +8,21 @@ export default function Login() {
       <LinearGradient style={styles.gradientBackground}
         colors={['#293A80', '#010038']}
         start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-      />
+        end={{ x: 0, y: 1 }}>
+      </LinearGradient>
 
-      <Image style={styles.Logo} source={require('./assets/ExeLogo.png')}/>
-    
+      <Image style={styles.Logo} source={require('../../../assets/ExeLogo.png')}/>
+      
       <View style={styles.formContainer}>
         <View>
           <TextInput style={styles.textInput} placeholder='E-mail' placeholderTextColor='#84848B'/> 
           <TextInput style={styles.textInput} placeholder='Senha' placeholderTextColor='#84848B'
             secureTextEntry={true} // Definir para true para ocultar a senha 
-            
           />
-          <Text style={styles.text}>Esqueceu sua senha?</Text>
+
+          <TouchableOpacity>
+            <Text style={styles.text}>Esqueceu sua senha?</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Entrar</Text>
@@ -29,7 +31,10 @@ export default function Login() {
       </View>
 
       <View style={styles.textBottom}>
-        <Text style={styles.beforeLink}>Não possui conta? <Text style={styles.link}>Cadastre-se</Text></Text>
+          <Text style={styles.beforeLink}>Não possui conta? </Text>
+          <TouchableOpacity>
+            <Text style={styles.link}>Cadastre-se</Text>
+          </TouchableOpacity>
       </View>  
       
     </View>
@@ -54,12 +59,17 @@ export default function Login() {
     height: '100%',
   },
 
-  //formContainer: {},
+  backImage:{
+    resizeMode: 'cover',
+    width: 20,
+    height: 20,
+  },
 
   Logo:{
-    marginTop: '10%',
-    width: '20%',
-    height: '20%',
+    marginTop: '20%',
+    marginBottom: 10,
+    width: 110,
+    height: 110,
   },
 
   textInput:{
@@ -97,6 +107,7 @@ export default function Login() {
   },
   
   textBottom:{
+    flexDirection: 'row',
     alignItems: 'center',
     marginTop: '30%',
     marginBottom: 15,

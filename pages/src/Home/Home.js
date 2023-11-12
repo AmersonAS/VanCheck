@@ -11,7 +11,7 @@ export default function Home() {
             end={{ x: 0, y: -0.1 }}/>
 
           <View style={styles.header}>
-            <Image source={require('./assets/ExeLogo.png')} style={[styles.LogoImage, {width:30, height:30}]}/>
+            <Image source={require('../../assets/ExeLogo.png')} style={[styles.LogoImage, {width:30, height:30}]}/>
 
             <Text style={styles.TextPassageiro}>Passageiro | Nathan Silva</Text>
           </View>
@@ -21,7 +21,7 @@ export default function Home() {
           </View>
 
           <View style={styles.content}>
-            <ImageBackground source={require('./assets/Rota-Enfeite.png')} style={styles.backImage}>
+            <ImageBackground source={require('../../../assets/Rota-Enfeite.png')} style={styles.backImage}>
               <TouchableOpacity style={styles.embarcarButton}>
                 <Text style={styles.buttonText}>Embarcar</Text>
               </TouchableOpacity>
@@ -29,10 +29,9 @@ export default function Home() {
           </View>
         </View>
         
-    );
+    )
 
-    /*teste*/
-}
+};
 
 const styles = StyleSheet.create({
     container:{
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
       },
 
       header:{
-        paddingTop:25,
+        paddingTop:'10%',
         paddingBottom:12,
         alignItems: 'center',
         backgroundColor: '#1A1B28',
@@ -74,14 +73,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width:'100%',
         backgroundColor:'rgba(38, 39, 50, 0.3)',
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 5,
-        },
-        shadowOpacity: 0.2, // Opacidade da sombra
-        shadowRadius: 5, // Raio da sombra
-        elevation: 5, // Sombra no Android (não é necessário no iOS)
       },
 
       textViagens:{
@@ -99,8 +90,8 @@ const styles = StyleSheet.create({
 
       embarcarButton:{
         backgroundColor:'#F39422',
-        width:'40%',
-        height:'9%',
+        width:150,
+        height:50,
         borderRadius:15,
         justifyContent:'center',
         alignItems:'center',
