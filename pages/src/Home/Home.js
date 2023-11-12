@@ -12,7 +12,6 @@ export default function Home() {
 
           <View style={styles.header}>
             <Image source={require('../../../assets/ExeLogo.png')} style={[styles.LogoImage, {width:30, height:30}]}/>
-
             <Text style={styles.TextPassageiro}>Passageiro | Nathan Silva</Text>
           </View>
 
