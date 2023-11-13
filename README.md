@@ -35,6 +35,8 @@ Explicação da estrutura de arquivos.
 Amerson Araújo Silva - Design, Programador Front-End
 Nathan Augusto Alves da Silva - Design, Programador Front-End
 
+//Faltando o restante do grupo e suas funções
+
 ## Contato (GitHub)
 https://github.com/AmersonAS
 https://github.com/NathanAugusth
