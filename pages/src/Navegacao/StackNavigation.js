@@ -6,6 +6,7 @@ import Cadastro from '../Cadastro/Cadastro.js';
 import Step1 from '../Embarque/Step1.js';
 import Step2 from '../Embarque/Step2.js';
 import Step3 from '../Embarque/Step3.js';
+
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigator(){

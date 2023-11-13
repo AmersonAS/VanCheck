@@ -37,16 +37,18 @@ import { useNavigation } from '@react-navigation/native';
 
                 <View style={styles.StepButtons}>
                     <TouchableOpacity style={styles.optionButtons}>
-                        <Image style={styles.textDetails} source={require('../../../assets/Arrow_GoBack.svg')}/>
-                        <Text style={styles.optionButtonsText}>Opção 1</Text>
+                        <Image style={styles.Arrows} source={require('../../../assets/Arrow_GoBack.png')}/>
+                        <Text style={styles.optionButtonsText}>Vai e volta</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.optionButtons}>
-                        <Text style={styles.optionButtonsText}>Opção 1</Text>
+                        <Image style={styles.Arrows} source={require('../../../assets/Arrow_Go.png')}/>
+                        <Text style={styles.optionButtonsText}>Só vai</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.optionButtons}>
-                        <Text style={styles.optionButtonsText}>Opção 1</Text>
+                        <Image style={styles.Arrows} source={require('../../../assets/Arrow_Back.png')}/>
+                        <Text style={styles.optionButtonsText}>Só volta</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -120,12 +122,17 @@ const styles = StyleSheet.create({
     },
     optionButtons:{
         alignItems:'center',
-        justifyContent:'center',
+        flexDirection:'row',
+        justifyContent:'space-evenly',
         backgroundColor: '#1A1B28',
         marginTop:30,
         width:350,
         height:80,
         borderRadius: 14,
+    },
+    Arrows:{
+        width:40,
+        height:40,
     },
     optionButtonsText:{
         color:'#eeeeee',
