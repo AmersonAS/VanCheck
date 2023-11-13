@@ -1,5 +1,5 @@
 
-import { Image, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground} from 'react-native';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Login() {
@@ -24,7 +24,7 @@ export default function Login() {
             <Text style={styles.text}>Esqueceu sua senha?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
         </View>
@@ -57,12 +57,6 @@ export default function Login() {
     left: 0,
     width: '100%',
     height: '100%',
-  },
-
-  backImage:{
-    resizeMode: 'cover',
-    width: 20,
-    height: 20,
   },
 
   Logo:{
