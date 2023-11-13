@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image, Platform} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
     export default function Step1(){
         const [opcaoSelecionada, setOpcaoSelecionada] = useState(null);
@@ -8,6 +9,13 @@ import { LinearGradient } from 'expo-linear-gradient';
         const handlePress = (opcao) => {
             setOpcaoSelecionada(opcao);
         };
+        const navigation = useNavigation();
+        const irparaStep2 = () => {
+            navigation.navigate("Step2");}
+        const voltar = () => {
+            navigation.goBack();
+        };
+          
 
         return (
             <View style={styles.container}>
@@ -44,11 +52,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
                 <View style={styles.buttonsBackNext}>
-                    <TouchableOpacity style={styles.BackButton}>
+                    <TouchableOpacity style={styles.BackButton} onPress={voltar}>
                         <Text style={styles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.NextButton}>
+                    <TouchableOpacity style={styles.NextButton} onPress={irparaStep2}>
                         <Text style={styles.buttonText}>Próximo</Text>
                     </TouchableOpacity>
                 </View>

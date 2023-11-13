@@ -1,8 +1,15 @@
 import { Image, Button, StyleSheet, Text, TextInput, View, TouchableOpacity, ImageBackground} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'
 import { BlurView } from 'expo-blur';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
+
+  const navigation = useNavigation();
+  const irparaStep1 = () => {
+    navigation.navigate("Step1");}
+  
+
     return (
         <View style={styles.container}>
           <LinearGradient style={styles.gradientBackground}
@@ -11,7 +18,7 @@ export default function Home() {
             end={{ x: 0, y: -0.1 }}/>
 
           <View style={styles.header}>
-            <Image source={require('../../../assets/ExeLogo.png')} style={[styles.LogoImage, {width:30, height:30}]}/>
+            <Image source={require('../../../assets/Van-Check-Icon.png')} style={[styles.LogoImage, {width:30, height:30}]}/>
             <Text style={styles.TextPassageiro}>Passageiro | Nathan Silva</Text>
           </View>
 
@@ -21,7 +28,7 @@ export default function Home() {
 
           <View style={styles.content}>
             <ImageBackground source={require('../../../assets/Rota-Enfeite.png')} style={styles.backImage}>
-              <TouchableOpacity style={styles.embarcarButton}>
+              <TouchableOpacity style={styles.embarcarButton} onPress={irparaStep1}>
                 <Text style={styles.buttonText}>Embarcar</Text>
               </TouchableOpacity>
             </ImageBackground>

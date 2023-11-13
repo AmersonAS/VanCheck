@@ -1,10 +1,11 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from './Home/Home.js'
 import Options from './Options/Options.js'
 import Profile from './Profile/Profile.js'
 
 import {Ionicons} from '@expo/vector-icons'
+import { NavigationContainer } from '@react-navigation/native'
 
 const Tab = createBottomTabNavigator();
 
@@ -74,5 +75,7 @@ function Routes() {
         </Tab.Navigator>
     )
 }
-
 export default Routes;
+
+
+

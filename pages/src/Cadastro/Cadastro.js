@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native
 import { CheckBox } from 'expo-checkbox';
 import React, {useState} from 'react';
 
+
 export default function Cadastro() {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   return (

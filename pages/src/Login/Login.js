@@ -1,8 +1,17 @@
 
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Login() {
+  
+  const navigation = useNavigation();
+  const irparaHome = () => {
+    navigation.navigate("Home");}
+  const irparaCadastro = () => {
+    navigation.navigate("Cadastro");}
+
+
   return (
     <View style={styles.container}>
       <LinearGradient style={styles.gradientBackground}
@@ -11,7 +20,7 @@ export default function Login() {
         end={{ x: 0, y: 1 }}>
       </LinearGradient>
 
-      <Image style={styles.Logo} source={require('../../../assets/ExeLogo.png')}/>
+      <Image style={styles.Logo} source={require('../../../assets/Van-Check-Icon.png')}/>
       
       <View style={styles.formContainer}>
         <View>
@@ -24,7 +33,7 @@ export default function Login() {
             <Text style={styles.text}>Esqueceu sua senha?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity style={styles.button} onPress={irparaHome}>
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
         </View>
@@ -32,7 +41,7 @@ export default function Login() {
 
       <View style={styles.textBottom}>
           <Text style={styles.beforeLink}>Não possui conta? </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={irparaCadastro}>
             <Text style={styles.link}>Cadastre-se</Text>
           </TouchableOpacity>
       </View>  
@@ -118,4 +127,3 @@ export default function Login() {
 
 
  });
- 
