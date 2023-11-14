@@ -7,7 +7,7 @@ export default function Login() {
   
   const navigation = useNavigation();
   const irparaHome = () => {
-    navigation.navigate("Home");}
+    navigation.navigate("Routes");}
   const irparaCadastro = () => {
     navigation.navigate("Cadastro");}
 

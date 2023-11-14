@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image, Platform} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image, Platform, Pressable} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
     export default function Step1(){
-        const [opcaoSelecionada, setOpcaoSelecionada] = useState(null);
 
-        const handlePress = (opcao) => {
-            setOpcaoSelecionada(opcao);
-        };
+        const [pressed, setPressed] = useState(false);
+          
+            const handlePress = () => {
+              setPressed(!pressed);}
+        ;
         const navigation = useNavigation();
         const irparaStep2 = () => {
             navigation.navigate("Step2");}
@@ -22,56 +23,60 @@ import { useNavigation } from '@react-navigation/native';
                 <LinearGradient style={styles.gradientBackground}
                 colors={['#293A80', '#010038']}
                 start={{ x: 0, y: 1.5 }}
-                end={{ x: 0, y: -0.1 }}/> 
+                end={{ x: 0, y: -0.1 }}>
 
-                <View style={styles.title}>
-                    <Image style={styles.textDetails} source={require('../../../assets/textDetails.png')}/>
-                    <Text style={styles.TitleStep1}>Vai e volta?</Text>
-                </View>
-
-
-                {/*<View style={styles.contentBackImage}>
-                    <ImageBackground source={require('../../../assets/backImage-Step1.png')} style={styles.backImage}/>       
-                </View>*/}
-                
-
-                <View style={styles.StepButtons}>
-                    <TouchableOpacity style={styles.optionButtons}>
-                        <Image style={styles.Arrows} source={require('../../../assets/Arrow_GoBack.png')}/>
-                        <Text style={styles.optionButtonsText}>Vai e volta</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.optionButtons}>
-                        <Image style={styles.Arrows} source={require('../../../assets/Arrow_Go.png')}/>
-                        <Text style={styles.optionButtonsText}>Só vai</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.optionButtons}>
-                        <Image style={styles.Arrows} source={require('../../../assets/Arrow_Back.png')}/>
-                        <Text style={styles.optionButtonsText}>Só volta</Text>
-                    </TouchableOpacity>
-                </View>
+                    <ImageBackground style={styles.backgroundImage} source={require('../../../assets/Step1/BackImage-Step1.png')}>
+                        <View style={styles.insideConteiner}>
+                            <View style={styles.title}>
+                                <Image style={styles.textDetails} source={require('../../../assets/textDetails.png')}/>
+                                <Text style={styles.TitleStep1}>Vai e volta?</Text>
+                            </View>
 
 
-                <View style={styles.buttonsBackNext}>
-                    <TouchableOpacity style={styles.BackButton} onPress={voltar}>
-                        <Text style={styles.buttonText}>Voltar</Text>
-                    </TouchableOpacity>
+                            <View style={styles.StepButtons}>
+                                <TouchableOpacity onPress={handlePress} style={[styles.option, pressed && styles.activiOption]}>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Step1/Arrow_GoBack.png')}/>
+                                    <Text style={styles.optionButtonsText}>Vai e volta</Text>
+                                </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.NextButton} onPress={irparaStep2}>
-                        <Text style={styles.buttonText}>Próximo</Text>
-                    </TouchableOpacity>
-                </View>
+                                <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Step1/Arrow_Go.png')}/>
+                                    <Text style={styles.optionButtonsText}>Só vai</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Step1/Arrow_Back.png')}/>
+                                    <Text style={styles.optionButtonsText}>Só volta</Text>
+                                </TouchableOpacity>
+                            </View>
+
+
+                            <View style={styles.buttonsBackNext}>
+                                <TouchableOpacity style={styles.BackButton} onPress={voltar}>
+                                    <Text style={styles.buttonText}>Voltar</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={styles.NextButton} onPress={irparaStep2}>
+                                    <Text style={styles.buttonText}>Próximo</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </ImageBackground>
+                </LinearGradient>
             </View>
         );
     };
 
+//---------------------------------------------------------
 const styles = StyleSheet.create({
     container:{
         flex: 1,
+    },
+    insideConteiner:{
+        flex:1,
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         position: 'relative',
     },
 
@@ -82,13 +87,20 @@ const styles = StyleSheet.create({
         left: 0,
         width: '100%',
         height: '100%',
-      },
+    },
 
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+    },
+
+//---------------------------------------------------------
     title:{
         flexDirection:'row',
-        marginTop:80,
-        left:20,
-        position:'absolute',
+        marginTop:65,
+        left:'5%',
+        width:'100%',
     },
 
     textDetails:{
@@ -102,58 +114,90 @@ const styles = StyleSheet.create({
         fontSize:35,
     },
 
-    /*contentBackImage:{
-        flex:1,
-        flexDirection: 'column',
-        justifyContent: 'space-betwen',
-        alignItems: 'center',
-    },
 
-    backImage:{
-        alignItems:'center',
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
-    },*/
-
+//---------------------------------------------------------
     StepButtons:{
-        marginTop:'65%',
         alignItems:'center',
     },
-    optionButtons:{
+
+    option:{
+        paddingHorizontal:70,
         alignItems:'center',
         flexDirection:'row',
-        justifyContent:'space-evenly',
+        justifyContent:'space-between',
         backgroundColor: '#1A1B28',
-        marginTop:30,
-        width:350,
+        width:330,
         height:80,
         borderRadius: 14,
+        ...Platform.select({
+            ios: {
+              shadowColor: 'rgba(0, 0, 0, 0.3)',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.8,
+              shadowRadius: 2,
+            },
+            android: {
+              elevation: 5,
+            },
+          }),
     },
+    option2:{
+        marginTop:30,
+    },
+    activiOption:{
+        borderWidth: 2,
+        borderColor: '#F39422',
+        paddingHorizontal:70,
+        alignItems:'center',
+        flexDirection:'row',
+        justifyContent:'space-between',
+        backgroundColor: '#1A1B28',
+        width:330,
+        height:80,
+        borderRadius: 14,
+        ...Platform.select({
+            ios: {
+              shadowColor: 'rgba(0, 0, 0, 0.3)',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.8,
+              shadowRadius: 2,
+            },
+            android: {
+              elevation: 5,
+            },
+          }),
+    },
+
+    /*optionButtons2:{
+        borderWidth: 2,
+        borderColor: '#F39422',
+        marginTop:30,
+    },*/
+
     Arrows:{
         width:40,
         height:40,
     },
+
     optionButtonsText:{
         color:'#eeeeee',
         fontSize:20,
     },
 
+//---------------------------------------------------------
     buttonsBackNext:{
-        flex:1,
-        alignItems:'flex-end',
         justifyContent:'center',
         flexDirection:'row',
     },
 
     BackButton:{
         backgroundColor:'#1A1B28',
-        borderRadius:10,
+        borderRadius:15,
         justifyContent:'center',
         alignItems:'center',
         marginBottom:'5%',
         width:145,
-        height:60,
+        height:50,
         ...Platform.select({
             ios: {
               shadowColor: 'rgba(0, 0, 0, 0.3)',
@@ -169,13 +213,13 @@ const styles = StyleSheet.create({
 
     NextButton:{
         backgroundColor:'#F39422',
-        borderRadius:10,
+        borderRadius:15,
         justifyContent:'center',
         alignItems:'center',
         marginBottom:'5%',
         marginLeft:30,
         width:145,
-        height:60,
+        height:50,
         ...Platform.select({
             ios: {
               shadowColor: 'rgba(0, 0, 0, 0.3)',

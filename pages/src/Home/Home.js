@@ -18,7 +18,7 @@ export default function Home() {
             end={{ x: 0, y: -0.1 }}/>
 
           <View style={styles.header}>
-            <Image source={require('../../../assets/Van-Check-Icon.png')} style={[styles.LogoImage, {width:30, height:30}]}/>
+            <Image source={require('../../../assets/Van-Check-Icon.png')} style={[styles.LogoImage, {width:40, height:40}]}/>
             <Text style={styles.TextPassageiro}>Passageiro | Nathan Silva</Text>
           </View>
 
@@ -27,7 +27,7 @@ export default function Home() {
           </View>
 
           <View style={styles.content}>
-            <ImageBackground source={require('../../../assets/Rota-Enfeite.png')} style={styles.backImage}>
+            <ImageBackground source={require('../../../assets/BackImage-Home.png')} style={styles.backImage}>
               <TouchableOpacity style={styles.embarcarButton} onPress={irparaStep1}>
                 <Text style={styles.buttonText}>Embarcar</Text>
               </TouchableOpacity>
@@ -110,3 +110,4 @@ const styles = StyleSheet.create({
         fontSize:16,
       }
 })
+
