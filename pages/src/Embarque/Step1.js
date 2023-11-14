@@ -168,12 +168,6 @@ const styles = StyleSheet.create({
           }),
     },
 
-    /*optionButtons2:{
-        borderWidth: 2,
-        borderColor: '#F39422',
-        marginTop:30,
-    },*/
-
     Arrows:{
         width:40,
         height:40,
