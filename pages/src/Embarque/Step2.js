@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image, Platform, Pressable} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image, Platform,ImageBackground, Pressable} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
@@ -21,47 +21,48 @@ import { useNavigation } from '@react-navigation/native';
                 start={{ x: 0, y: 1.5 }}
                 end={{ x: 0, y: -0.1 }}/> 
 
-                <View style={styles.insideConteiner}>
-                    <View style={styles.title}>
-                        <Image style={styles.textDetails} source={require('../../../assets/textDetails.png')}/>
-                        <Text style={styles.TitleStep1}>Onde vamos?</Text>
-                    </View>
+                    <ImageBackground style={styles.backgroundImage} source={require('../../../assets/Step2/BackImage-Step2.png')}>
+                        <View style={styles.insideConteiner}>
+                            <View style={styles.title}>
+                                <Image style={styles.textDetails} source={require('../../../assets/textDetails.png')}/>
+                                <Text style={styles.TitleStep1}>Onde vamos?</Text>
+                            </View>
 
 
-                    <View style={styles.StepButtons}>
-                        <TouchableOpacity onPress={handlePress} style={[styles.option, pressed && styles.activiOption]}>
-                            <Image style={styles.Arrows} source={require('../../../assets/Step2/FavipImage.png')}/>
-                            <Text style={styles.optionButtonsText}>Unifavip Wyden</Text>
-                        </TouchableOpacity>
+                            <View style={styles.StepButtons}>
+                                <TouchableOpacity onPress={handlePress} style={[styles.option, pressed && styles.activiOption]}>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Step2/FavipImage.png')}/>
+                                    <Text style={styles.optionButtonsText}>Unifavip Wyden</Text>
+                                </TouchableOpacity>
 
-                        <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
-                            <Image style={styles.Arrows} source={require('../../../assets/Step2/NassauImage.png')}/>
-                            <Text style={styles.optionButtonsText}>Uninassau</Text>
-                        </TouchableOpacity>
+                                <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Step2/NassauImage.png')}/>
+                                    <Text style={styles.optionButtonsText}>Uninassau</Text>
+                                </TouchableOpacity>
 
-                        <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
-                            <Image style={styles.Arrows} source={require('../../../assets/Step2/AscesImage.png')}/>
-                            <Text style={styles.optionButtonsText}>Asces Unita</Text>
-                        </TouchableOpacity>
-                    </View>
+                                <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Step2/AscesImage.png')}/>
+                                    <Text style={styles.optionButtonsText}>Asces Unita</Text>
+                                </TouchableOpacity>
+                            </View>
 
 
-                    <View style={styles.buttonsBackNext}>
-                        <TouchableOpacity style={styles.BackButton} onPress={voltar}>
-                            <Text style={styles.buttonText}>Voltar</Text>
-                        </TouchableOpacity>
+                            <View style={styles.buttonsBackNext}>
+                                <TouchableOpacity style={styles.BackButton} onPress={voltar}>
+                                    <Text style={styles.buttonText}>Voltar</Text>
+                                </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.NextButton}>
-                            <Text style={styles.buttonText}>Próximo</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                                <TouchableOpacity style={styles.NextButton}>
+                                    <Text style={styles.buttonText}>Próximo</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </ImageBackground>
             </View>
         );
     };
 
 //---------------------------------------------------------
-
 const styles = StyleSheet.create({
     container:{
         flex: 1,
@@ -81,8 +82,13 @@ const styles = StyleSheet.create({
         left: 0,
         width: '100%',
         height: '100%',
-      },
+    },
 
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+    },
 //---------------------------------------------------------
     title:{
         flexDirection:'row',
@@ -133,8 +139,9 @@ const styles = StyleSheet.create({
         marginTop:30,
     },
     activiOption:{
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: '#F39422',
+
         paddingHorizontal:70,
         alignItems:'center',
         flexDirection:'row',

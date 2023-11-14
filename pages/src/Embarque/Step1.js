@@ -145,8 +145,10 @@ const styles = StyleSheet.create({
         marginTop:30,
     },
     activiOption:{
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: '#F39422',
+        
+
         paddingHorizontal:70,
         alignItems:'center',
         flexDirection:'row',
