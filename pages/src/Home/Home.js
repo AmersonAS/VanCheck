@@ -1,6 +1,5 @@
-import { Image, Button, StyleSheet, Text, TextInput, View, TouchableOpacity, ImageBackground} from 'react-native';
+import { Image, Button, StyleSheet, Text,ScrollView, View, TouchableOpacity, ImageBackground} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'
-import { BlurView } from 'expo-blur';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
@@ -28,6 +27,13 @@ export default function Home() {
 
           <View style={styles.content}>
             <ImageBackground source={require('../../../assets/BackImage-Home.png')} style={styles.backImage}>
+
+              <ScrollView style={{/*marginTop:'10%',*/ width:'100%'}}>
+                <View style={styles.ScrollTest}>
+                  {/*CONTEÚDO DA HOME*/}
+                </View>
+              </ScrollView>
+
               <TouchableOpacity style={styles.embarcarButton} onPress={irparaStep1}>
                 <Text style={styles.buttonText}>Embarcar</Text>
               </TouchableOpacity>
@@ -92,6 +98,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'cover',
+      },
+
+      ScrollTest:{
+        paddingTop: '3%',
+        alignItems:'center',
       },
 
       embarcarButton:{

@@ -11,6 +11,8 @@ import { useNavigation } from '@react-navigation/native';
               setPressed(!pressed);}
 
         const navigation = useNavigation();
+        const irparaStep3 = () => {
+            navigation.navigate("Step3");}
         const voltar = () => {
             navigation.goBack();
         }; 
@@ -21,27 +23,27 @@ import { useNavigation } from '@react-navigation/native';
                 start={{ x: 0, y: 1.5 }}
                 end={{ x: 0, y: -0.1 }}/> 
 
-                    <ImageBackground style={styles.backgroundImage} source={require('../../../assets/Step2/BackImage-Step2.png')}>
+                    <ImageBackground style={styles.backgroundImage} source={require('../../../assets/Steps/BackImage-Step2.png')}>
                         <View style={styles.insideConteiner}>
                             <View style={styles.title}>
                                 <Image style={styles.textDetails} source={require('../../../assets/textDetails.png')}/>
-                                <Text style={styles.TitleStep1}>Onde vamos?</Text>
+                                <Text style={styles.TitleStep2}>Onde vamos?</Text>
                             </View>
 
 
                             <View style={styles.StepButtons}>
                                 <TouchableOpacity onPress={handlePress} style={[styles.option, pressed && styles.activiOption]}>
-                                    <Image style={styles.Arrows} source={require('../../../assets/Step2/FavipImage.png')}/>
+                                    <Image style={styles.Imagess} source={require('../../../assets/Steps/FavipImage.png')}/>
                                     <Text style={styles.optionButtonsText}>Unifavip Wyden</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
-                                    <Image style={styles.Arrows} source={require('../../../assets/Step2/NassauImage.png')}/>
+                                    <Image style={styles.Imagess} source={require('../../../assets/Steps/NassauImage.png')}/>
                                     <Text style={styles.optionButtonsText}>Uninassau</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
-                                    <Image style={styles.Arrows} source={require('../../../assets/Step2/AscesImage.png')}/>
+                                    <Image style={styles.Imagess} source={require('../../../assets/Steps/AscesImage.png')}/>
                                     <Text style={styles.optionButtonsText}>Asces Unita</Text>
                                 </TouchableOpacity>
                             </View>
@@ -52,7 +54,7 @@ import { useNavigation } from '@react-navigation/native';
                                     <Text style={styles.buttonText}>Voltar</Text>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.NextButton}>
+                                <TouchableOpacity style={styles.NextButton} onPress={irparaStep3}>
                                     <Text style={styles.buttonText}>Próximo</Text>
                                 </TouchableOpacity>
                             </View>
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
         height:15,
     },
 
-    TitleStep1:{
+    TitleStep2:{
         color: '#eeeeee',
         fontWeight: 'bold',
         fontSize:35,
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
           }),
     },
 
-    Arrows:{
+    Imagess:{
         width:40,
         height:40,
     },

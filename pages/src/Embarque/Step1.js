@@ -25,7 +25,7 @@ import { useNavigation } from '@react-navigation/native';
                 start={{ x: 0, y: 1.5 }}
                 end={{ x: 0, y: -0.1 }}>
 
-                    <ImageBackground style={styles.backgroundImage} source={require('../../../assets/Step1/BackImage-Step1.png')}>
+                    <ImageBackground style={styles.backgroundImage} source={require('../../../assets/Steps/BackImage-Step1.png')}>
                         <View style={styles.insideConteiner}>
                             <View style={styles.title}>
                                 <Image style={styles.textDetails} source={require('../../../assets/textDetails.png')}/>
@@ -35,17 +35,17 @@ import { useNavigation } from '@react-navigation/native';
 
                             <View style={styles.StepButtons}>
                                 <TouchableOpacity onPress={handlePress} style={[styles.option, pressed && styles.activiOption]}>
-                                    <Image style={styles.Arrows} source={require('../../../assets/Step1/Arrow_GoBack.png')}/>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Steps/Arrow_GoBack.png')}/>
                                     <Text style={styles.optionButtonsText}>Vai e volta</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
-                                    <Image style={styles.Arrows} source={require('../../../assets/Step1/Arrow_Go.png')}/>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Steps/Arrow_Go.png')}/>
                                     <Text style={styles.optionButtonsText}>Só vai</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={handlePress} style={[styles.option, styles.option2, pressed && styles.activiOption]}>
-                                    <Image style={styles.Arrows} source={require('../../../assets/Step1/Arrow_Back.png')}/>
+                                    <Image style={styles.Arrows} source={require('../../../assets/Steps/Arrow_Back.png')}/>
                                     <Text style={styles.optionButtonsText}>Só volta</Text>
                                 </TouchableOpacity>
                             </View>

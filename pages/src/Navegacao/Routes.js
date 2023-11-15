@@ -1,8 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import Home from './Home/Home.js'
-import Options from './Options/Options.js'
-import Profile from './Profile/Profile.js'
+import Home from '../Home/Home.js'
+import Options from '../Options/Options.js'
+import Profile from '../Profile/Profile.js'
 
 import {Ionicons} from '@expo/vector-icons'
 import { NavigationContainer } from '@react-navigation/native'
@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 function Routes() {
     return(
-        <Tab.Navigator 
+        <Tab.Navigator
         screenOptions={{
             tabBarShowLabel: false,
             tabBarStyle:{
@@ -27,6 +27,7 @@ function Routes() {
                 height:65,
 
             }
+        
         }}>
             <Tab.Screen
             name='Home'

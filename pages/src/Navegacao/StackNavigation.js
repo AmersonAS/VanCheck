@@ -6,7 +6,7 @@ import Cadastro from '../Cadastro/Cadastro.js';
 import Step1 from '../Embarque/Step1.js';
 import Step2 from '../Embarque/Step2.js';
 import Step3 from '../Embarque/Step3.js';
-import Routes from '../Routes.js';
+import Routes from '../Navegacao/Routes.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,8 @@ export default function StackNavigator(){
             <Stack.Screen name='Routes' component={Routes}/> 
             <Stack.Screen name='Cadastro' component={Cadastro} />
             <Stack.Screen name='Step1' component={Step1} />
-            <Stack.Screen name='Step2' component={Step2} />       
+            <Stack.Screen name='Step2' component={Step2} />    
+            <Stack.Screen name='Step3' component={Step3} />     
                 
             </Stack.Navigator>
         </NavigationContainer>
