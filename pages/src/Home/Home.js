@@ -28,7 +28,7 @@ export default function Home() {
           <View style={styles.content}>
             <ImageBackground source={require('../../../assets/BackImage-Home.png')} style={styles.backImage}>
 
-              <ScrollView style={{/*marginTop:'10%',*/ width:'100%'}}>
+              <ScrollView style={{width:'100%'}}>
                 <View style={styles.ScrollTest}>
                   {/*CONTEÚDO DA HOME*/}
                 </View>
