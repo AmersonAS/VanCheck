@@ -5,21 +5,48 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  KeyboardAvoidingView,
 } from 'react-native';
+import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import app from '../config/firebase';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login() {
-  const navigation = useNavigation();
-  const irparaHome = () => {
-    navigation.navigate('Home');
-  };
-  const irparaCadastro = () => {
-    navigation.navigate('Cadastro');
+  //const database = firebase.firestore()
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorLogin, setErrorLogin] = useState('');
+
+  const loginFirebase = () => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log();
+        //navigation.navigate('Home, {idUser: user.uid})
+        // ...
+      })
+      .catch((error) => {
+        setErrorLogin(true);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   };
 
+  useEffect(() => {}, []);
+
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
       <LinearGradient
         style={styles.gradientBackground}
         colors={['#293A80', '#010038']}
@@ -38,31 +65,54 @@ export default function Login() {
             style={styles.textInput}
             placeholder="E-mail"
             placeholderTextColor="#84848B"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Senha"
             placeholderTextColor="#84848B"
             secureTextEntry={true} // Definir para true para ocultar a senha
+            onChangeText={(text) => setPassword(text)}
+            value={password}
           />
+
+          {errorLogin === true ? (
+            <View style={styles.contentAlert}>
+              <MaterialCommunityIcons
+                name="alert-circle"
+                size={24}
+                color="#bdbdbd"
+              />
+              <Text style={styles.warningAlert}>e-mail ou senha inválidos</Text>
+            </View>
+          ) : (
+            <View />
+          )}
 
           <TouchableOpacity>
             <Text style={styles.text}>Esqueceu sua senha?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={irparaHome}>
-            <Text style={styles.buttonText}>Entrar</Text>
-          </TouchableOpacity>
+          {email === '' || password === '' ? (
+            <TouchableOpacity style={styles.button} disabled={true}>
+              <Text style={styles.buttonText}>Entrar</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={styles.button} onPress={loginFirebase}>
+              <Text style={styles.buttonText}>Entrar</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
 
       <View style={styles.textBottom}>
         <Text style={styles.beforeLink}>Não possui conta? </Text>
-        <TouchableOpacity onPress={irparaCadastro}>
+        <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
           <Text style={styles.link}>Cadastre-se</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -139,6 +189,19 @@ const styles = StyleSheet.create({
 
   link: {
     textDecorationLine: 'underline',
+    color: '#F39422',
+  },
+
+  contentAlert: {
+    // marginLeft: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  warningAlert: {
+    paddingLeft: 5,
+    fontSize: 14,
     color: '#F39422',
   },
 });
