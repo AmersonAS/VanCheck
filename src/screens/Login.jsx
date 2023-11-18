@@ -10,13 +10,10 @@ import {
 import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import app from '../config/firebase';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login() {
-  //const database = firebase.firestore()
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorLogin, setErrorLogin] = useState('');
@@ -25,11 +22,8 @@ export default function Login() {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        console.log();
-        //navigation.navigate('Home, {idUser: user.uid})
-        // ...
+        navigation.navigate('Home', { idUser: user.uid });
       })
       .catch((error) => {
         setErrorLogin(true);
@@ -65,6 +59,9 @@ export default function Login() {
             style={styles.textInput}
             placeholder="E-mail"
             placeholderTextColor="#84848B"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoComplete="email"
             onChangeText={(text) => setEmail(text)}
             value={email}
           />
@@ -72,6 +69,7 @@ export default function Login() {
             style={styles.textInput}
             placeholder="Senha"
             placeholderTextColor="#84848B"
+            autoCapitalize="none"
             secureTextEntry={true} // Definir para true para ocultar a senha
             onChangeText={(text) => setPassword(text)}
             value={password}
@@ -82,7 +80,7 @@ export default function Login() {
               <MaterialCommunityIcons
                 name="alert-circle"
                 size={24}
-                color="#bdbdbd"
+                color="#F39422"
               />
               <Text style={styles.warningAlert}>e-mail ou senha inválidos</Text>
             </View>
@@ -202,6 +200,8 @@ const styles = StyleSheet.create({
   warningAlert: {
     paddingLeft: 5,
     fontSize: 14,
-    color: '#F39422',
+    color: '#F7B564',
+    fontStyle: 'italic',
+    textDecorationLine: 'underline',
   },
 });

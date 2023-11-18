@@ -11,10 +11,13 @@ import {
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import TabRoutes from '../routes/tab.routes';
+import React, { useState, useEffect } from 'react';
+import { firestore } from '../config/firebase';
 
-export default function Home() {
+export default function Home({ route }) {
+  const [userName, setUserName] = useState('');
   const navigation = useNavigation();
+
   const irparaStep1 = () => {
     navigation.navigate('Step1');
   };
@@ -33,7 +36,7 @@ export default function Home() {
           source={require('../../assets/Van-Check-Icon.png')}
           style={[styles.LogoImage, { width: 40, height: 40 }]}
         />
-        <Text style={styles.TextPassageiro}>Passageiro | Nathan Silva</Text>
+        <Text style={styles.TextPassageiro}>Passageiro | {}</Text>
       </View>
 
       <View style={styles.transparentBar}>
