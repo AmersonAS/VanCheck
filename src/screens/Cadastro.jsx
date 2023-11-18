@@ -10,8 +10,11 @@ import {
 import { Checkbox } from 'expo-checkbox';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { auth } from '../config/firebase';
+import { firestore } from '../config/firebase';
+import { doc, setDoc, collection } from 'firebase/firestore';
 
 export default function Cadastro() {
   const navigation = useNavigation();
@@ -28,7 +31,7 @@ export default function Cadastro() {
     birthDate: '',
   });
 
-  const register = () => {
+  const register = async () => {
     const {
       email,
       name,
@@ -38,41 +41,65 @@ export default function Cadastro() {
       phoneNumber,
       birthDate,
     } = formData;
-    if (
-      email === '' ||
-      name === '' ||
-      lastName === '' ||
-      userPass === '' ||
-      phoneNumber === '' ||
-      birthDate === ''
-    ) {
-      alert('Todos os campos devem ser preenchidos');
-      return;
-    }
-    if (userPass !== userRePass) {
-      alert('A senha e a confirmação devem ser iguais');
-      return;
-    }
-    if (!toggleCheckBox) {
-      alert('É necessário aceitar os Termos de Uso e Política de Privacidade');
-      return;
-    }
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, userPass)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        const userId = user.uid;
-        alert(`O usuário ${user.email} foi criado. Faça o Login`);
-        navigation.navigate('Login', { idUser: user.uid });
-      })
-      .catch((error) => {
-        setErrorRegister(true);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+
+    try {
+      if (
+        email === '' ||
+        name === '' ||
+        lastName === '' ||
+        userPass === '' ||
+        phoneNumber === '' ||
+        birthDate === ''
+      ) {
+        throw new Error('Todos os campos devem ser preenchidos');
+      }
+
+      if (userPass !== userRePass) {
+        throw new Error('A senha e a confirmação devem ser iguais');
+      }
+
+      if (!toggleCheckBox) {
+        throw new Error(
+          'É necessário aceitar os Termos de Uso e Política de Privacidade'
+        );
+      }
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        userPass
+      );
+      const user = userCredential.user;
+      const userId = user.uid;
+
+      // Atualize o perfil do usuário com o nome
+      await updateProfile(auth.currentUser, {
+        displayName: name,
       });
-    // Save additional user data to Firebase with UID
+
+      // Adicione dados adicionais à coleção "users" no Firestore
+      const usersCollection = collection(firestore, 'users');
+      const userDocRef = doc(usersCollection, userId);
+
+      const userData = {
+        userId: userId,
+        name: name,
+        lastName: lastName,
+        email: email,
+        phoneNumber: phoneNumber,
+        birthDate: birthDate,
+      };
+
+      await setDoc(userDocRef, userData);
+
+      console.log('Dados do usuário salvos no Firestore');
+      alert(`O usuário ${user.email} foi criado. Faça o Login`);
+      navigation.navigate('Login', { idUser: user.uid });
+    } catch (error) {
+      setErrorRegister(true);
+      console.error('Erro ao criar usuário:', error.message);
+      alert(`Erro ao criar usuário: ${error.message}`);
+    }
   };
 
   return (

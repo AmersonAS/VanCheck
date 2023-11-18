@@ -13,6 +13,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import { firestore } from '../config/firebase';
+import { auth } from '../config/firebase';
+import { getDoc, doc } from 'firebase/firestore';
 
 export default function Home({ route }) {
   const [userName, setUserName] = useState('');
@@ -21,6 +23,34 @@ export default function Home({ route }) {
   const irparaStep1 = () => {
     navigation.navigate('Step1');
   };
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const user = auth.currentUser;
+
+      if (user) {
+        const uid = user.uid;
+        const userDocRef = doc(firestore, 'users', uid);
+
+        try {
+          const userDocSnapshot = await getDoc(userDocRef);
+
+          if (userDocSnapshot.exists()) {
+            const userData = userDocSnapshot.data();
+            setUserName(userData.name); // Ou qualquer outro campo que você queira exibir
+          } else {
+            console.log('Documento do usuário não encontrado');
+          }
+        } catch (error) {
+          console.error('Erro ao obter dados do usuário:', error);
+        }
+      } else {
+        console.log('Nenhum usuário logado');
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -36,7 +66,7 @@ export default function Home({ route }) {
           source={require('../../assets/Van-Check-Icon.png')}
           style={[styles.LogoImage, { width: 40, height: 40 }]}
         />
-        <Text style={styles.TextPassageiro}>Passageiro | {}</Text>
+        <Text style={styles.TextPassageiro}>Passageiro | {userName} </Text>
       </View>
 
       <View style={styles.transparentBar}>

@@ -1,5 +1,9 @@
 import { initializeApp } from 'firebase/app';
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import {
+  initializeAuth,
+  getReactNativePersistence,
+  onAuthStateChanged,
+} from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -15,11 +19,23 @@ const firebaseConfig = {
   measurementId: 'G-HTF2E67BHD',
 };
 
-// Initialize Firebase
+// Initialize Firebase, Firestore and Auth
 const firebase = initializeApp(firebaseConfig);
 const firestore = getFirestore(firebase);
 const auth = initializeAuth(firebase, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
+
+//Observador para idenfitificar user atual
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    const uid = user.uid;
+  } else {
+    // User is signed out
+    // ...
+  }
 });
 
 export { firebase, firestore, auth };
