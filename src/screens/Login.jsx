@@ -11,7 +11,10 @@ import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from 'firebase/auth';
 import { auth } from '../config/firebase';
 
 export default function Login() {
@@ -32,6 +35,16 @@ export default function Login() {
       });
   };
 
+  const handleForgotPassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert('Lhe enviamos um email para a redefinição da sua senha');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
   useEffect(() => {}, []);
 
   const navigation = useNavigation();
@@ -88,7 +101,7 @@ export default function Login() {
             <View />
           )}
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleForgotPassword}>
             <Text style={styles.text}>Esqueceu sua senha?</Text>
           </TouchableOpacity>
 
