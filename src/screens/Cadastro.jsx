@@ -93,7 +93,7 @@ export default function Cadastro() {
       await setDoc(userDocRef, userData);
 
       console.log('Dados do usuário salvos no Firestore');
-      alert(`O usuário ${user.email} foi criado. Faça o Login`);
+      alert(`O usuário ${user.name} ${user.lastName} foi criado. Faça o Login`);
       navigation.navigate('Login', { idUser: user.uid });
     } catch (error) {
       setErrorRegister(true);
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   textBottom: {
     color: 'white',
     fontSize: 12,
-    marginBottom: 15,
+    marginBottom: 50,
   },
   link: {
     color: '#F39422',

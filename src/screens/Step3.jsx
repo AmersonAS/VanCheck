@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { BlurView } from 'expo-blur';
 
 export default function Step3() {
   const [pressed, setPressed] = useState(false);
@@ -47,85 +48,120 @@ export default function Step3() {
 
           <ScrollView style={{ marginTop: '10%', width: '100%' }}>
             <View style={styles.StepButtons}>
+
               <TouchableOpacity
                 onPress={handlePress}
+                activeOpacity={0.9}
                 style={[styles.option, pressed && styles.activiOption]}
               >
-                <View style={styles.NamePoint}>
-                  <Text style={styles.PointText}>BADU</Text>
-                </View>
-
-                <View style={styles.AddressPoint}>
-                  <View style={styles.aAlign}>
-                    <Text style={styles.a}>Logradouro</Text>
-                    <Text style={styles.a}> - </Text>
-                    <Text style={styles.a}>N°</Text>
+                <BlurView
+                  style={styles.blurContainer}
+                  intensity={7}
+                  tint="default"
+                >
+                  <View style={styles.NamePoint}>
+                    <Text style={styles.PointText}>BADU</Text>
                   </View>
-                  <Text style={styles.a}>Bairro</Text>
-                  <Text style={styles.a}>Cidade - Estado</Text>
-                </View>
+
+                  <View style={styles.AddressPoint}>
+                    <View style={styles.aAlign}>
+                      <Text style={styles.a}>Logradouro</Text>
+                      <Text style={styles.a}> - </Text>
+                      <Text style={styles.a}>N°</Text>
+                    </View>
+                    <Text style={styles.a}>Bairro</Text>
+                    <Text style={styles.a}>Cidade - Estado</Text>
+                    <Text style={styles.a}>Horário</Text>
+                  </View>
+                </BlurView>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handlePress}
+                activeOpacity={0.9}
                 style={[styles.option, pressed && styles.activiOption]}
               >
-                <View style={styles.NamePoint}>
-                  <Text style={styles.PointText}>AABB</Text>
-                </View>
-
-                <View style={styles.AddressPoint}>
-                  <View style={styles.aAlign}>
-                    <Text style={styles.a}>Logradouro</Text>
-                    <Text style={styles.a}> - </Text>
-                    <Text style={styles.a}>N°</Text>
+                <BlurView
+                  style={styles.blurContainer}
+                  intensity={7}
+                  tint="default"
+                >
+                  <View style={styles.NamePoint}>
+                    <Text style={styles.PointText}>AABB</Text>
                   </View>
-                  <Text style={styles.a}>Bairro</Text>
-                  <Text style={styles.a}>Cidade - Estado</Text>
-                </View>
+
+                  <View style={styles.AddressPoint}>
+                    <View style={styles.aAlign}>
+                      <Text style={styles.a}>Logradouro</Text>
+                      <Text style={styles.a}> - </Text>
+                      <Text style={styles.a}>N°</Text>
+                    </View>
+                    <Text style={styles.a}>Bairro</Text>
+                    <Text style={styles.a}>Cidade - Estado</Text>
+                    <Text style={styles.a}>Horário</Text>
+                  </View>
+                </BlurView>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handlePress}
+                activeOpacity={0.9}
                 style={[styles.option, pressed && styles.activiOption]}
               >
-                <View style={styles.NamePoint}>
-                  <Text style={styles.PointText}>CONVENIÊNCIA</Text>
-                </View>
-
-                <View style={styles.AddressPoint}>
-                  <View style={styles.aAlign}>
-                    <Text style={styles.a}>Logradouro</Text>
-                    <Text style={styles.a}> - </Text>
-                    <Text style={styles.a}>N°</Text>
+                <BlurView
+                  style={styles.blurContainer}
+                  intensity={7}
+                  tint="default"
+                >
+                  <View style={styles.NamePoint}>
+                    <Text style={styles.PointText}>CONVENIÊNCIA</Text>
                   </View>
-                  <Text style={styles.a}>Bairro</Text>
-                  <Text style={styles.a}>Cidade - Estado</Text>
-                </View>
+
+                  <View style={styles.AddressPoint}>
+                    <View style={styles.aAlign}>
+                      <Text style={styles.a}>Logradouro</Text>
+                      <Text style={styles.a}> - </Text>
+                      <Text style={styles.a}>N°</Text>
+                    </View>
+                    <Text style={styles.a}>Bairro</Text>
+                    <Text style={styles.a}>Cidade - Estado</Text>
+                    <Text style={styles.a}>Horário</Text>
+                  </View>
+                </BlurView>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handlePress}
+                activeOpacity={0.9}
                 style={[styles.option, pressed && styles.activiOption]}
               >
-                <View style={styles.NamePoint}>
-                  <Text style={styles.PointText}>SÃO DOMINGOS</Text>
-                </View>
-
-                <View style={styles.AddressPoint}>
-                  <View style={styles.aAlign}>
-                    <Text style={styles.a}>Logradouro</Text>
-                    <Text style={styles.a}> - </Text>
-                    <Text style={styles.a}>N°</Text>
+                <BlurView
+                  style={styles.blurContainer}
+                  intensity={7}
+                  tint="default"
+                >
+                  <View style={styles.NamePoint}>
+                    <Text style={styles.PointText}>SÃO DOMINGOS</Text>
                   </View>
-                  <Text style={styles.a}>Bairro</Text>
-                  <Text style={styles.a}>Cidade - Estado</Text>
-                </View>
+
+                  <View style={styles.AddressPoint}>
+                    <View style={styles.aAlign}>
+                      <Text style={styles.a}>Logradouro</Text>
+                      <Text style={styles.a}> - </Text>
+                      <Text style={styles.a}>N°</Text>
+                    </View>
+                    <Text style={styles.a}>Bairro</Text>
+                    <Text style={styles.a}>Cidade - Estado</Text>
+                    <Text style={styles.a}>Horário</Text>
+                  </View>
+                </BlurView>
               </TouchableOpacity>
             </View>
           </ScrollView>
 
-          <View style={styles.buttonsBackNext}>
+          <View 
+            style={styles.buttonsBackNext}
+          >
             <TouchableOpacity style={styles.BackButton} onPress={voltar}>
               <Text style={styles.buttonText}>Voltar</Text>
             </TouchableOpacity>
@@ -167,11 +203,12 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center',
   },
+
   //-------------------TITLE--------------------------------------
   title: {
     flexDirection: 'row',
     marginTop: 65,
-    left: '5%',
+    left: '3%',
     width: '100%',
   },
 
@@ -193,52 +230,31 @@ const styles = StyleSheet.create({
   },
 
   option: {
-    padding: 20,
-    marginBottom: 30,
-    alignItems: 'flex-start',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    backgroundColor: '#1A1B28',
     width: 330,
-    height: 130,
+    height: 140,
     borderRadius: 14,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'rgba(0, 0, 0, 0.3)',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 5,
-      },
-    }),
+    overflow: 'hidden',
+    marginBottom: 30,
+    borderWidth: 0.1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
   },
 
   activiOption: {
+    width: 330,
+    height: 140,
+    borderRadius: 14,
+    overflow: 'hidden',
+    marginBottom: 30,
     borderWidth: 1,
     borderColor: '#F39422',
+  },
 
-    padding: 20,
-    marginBottom: 30,
+  blurContainer: {
+    flex: 1,
     alignItems: 'flex-start',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    backgroundColor: '#1A1B28',
-    width: 330,
-    height: 130,
-    borderRadius: 14,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'rgba(0, 0, 0, 0.3)',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 5,
-      },
-    }),
+    padding: 20, 
   },
 
   PointText: {

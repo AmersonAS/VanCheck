@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const Options = () => {
+const Notifications = () => {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePressIn = () => {
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Options;
+export default Notifications;

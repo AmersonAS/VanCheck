@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { BlurView } from 'expo-blur';
 
 export default function Step1() {
   const [pressed, setPressed] = useState(false);
@@ -48,46 +49,75 @@ export default function Step1() {
             </View>
 
             <View style={styles.StepButtons}>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
               <TouchableOpacity
                 onPress={handlePress}
-                style={[styles.option, pressed && styles.activiOption]}
+                style={[
+                  styles.option, 
+                  pressed && styles.activiOption
+                ]}
               >
-                <Image
-                  style={styles.Arrows}
-                  source={require('../../assets/Steps/Arrow_GoBack.png')}
-                />
-                <Text style={styles.optionButtonsText}>Vai e volta</Text>
+                <BlurView
+                  style={styles.blurContainer}
+                  intensity={7}
+                  tint="default"
+                >
+                  <Image
+                    style={styles.Arrows}
+                    source={require('../../assets/Steps/Arrow_GoBack.png')}
+                  />
+                  <Text style={styles.optionButtonsText}>Vai e volta</Text>
+                </BlurView>
               </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
               <TouchableOpacity
                 onPress={handlePress}
                 style={[
                   styles.option,
-                  styles.option2,
                   pressed && styles.activiOption,
                 ]}
               >
-                <Image
-                  style={styles.Arrows}
-                  source={require('../../assets/Steps/Arrow_Go.png')}
-                />
-                <Text style={styles.optionButtonsText}>Só vai</Text>
+                <BlurView
+                  style={styles.blurContainer}
+                  intensity={7}
+                  tint="default"
+                >
+                  <Image
+                    style={styles.Arrows}
+                    source={require('../../assets/Steps/Arrow_Go.png')}
+                  />
+                  <Text style={styles.optionButtonsText}>Só vai</Text>
+                </BlurView>
               </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
               <TouchableOpacity
                 onPress={handlePress}
                 style={[
                   styles.option,
-                  styles.option2,
                   pressed && styles.activiOption,
                 ]}
               >
-                <Image
-                  style={styles.Arrows}
-                  source={require('../../assets/Steps/Arrow_Back.png')}
-                />
-                <Text style={styles.optionButtonsText}>Só volta</Text>
+                <BlurView
+                  style={styles.blurContainer}
+                  intensity={7}
+                  tint="default"
+                >
+                  <Image
+                    style={styles.Arrows}
+                    source={require('../../assets/Steps/Arrow_Back.png')}
+                  />
+                  <Text style={styles.optionButtonsText}>Só volta</Text>
+                </BlurView>
               </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
             </View>
 
             <View style={styles.buttonsBackNext}>
@@ -138,7 +168,7 @@ const styles = StyleSheet.create({
   title: {
     flexDirection: 'row',
     marginTop: 65,
-    left: '5%',
+    left: '3%',
     width: '100%',
   },
 
@@ -159,52 +189,31 @@ const styles = StyleSheet.create({
   },
 
   option: {
-    paddingHorizontal: 70,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#1A1B28',
     width: 330,
     height: 80,
     borderRadius: 14,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'rgba(0, 0, 0, 0.3)',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 5,
-      },
-    }),
+    overflow: 'hidden',
+    marginBottom: 30,
+    borderWidth: 0.1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
   },
-  option2: {
-    marginTop: 30,
-  },
+
   activiOption: {
+    width: 330,
+    height: 80,
+    borderRadius: 14,
+    overflow: 'hidden',
+    marginBottom: 30,
     borderWidth: 1,
     borderColor: '#F39422',
+  },
 
-    paddingHorizontal: 70,
+  blurContainer: {
+    flex: 1,
+    paddingHorizontal: 60,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#1A1B28',
-    width: 330,
-    height: 80,
-    borderRadius: 14,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'rgba(0, 0, 0, 0.3)',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-      },
-      android: {
-        elevation: 5,
-      },
-    }),
   },
 
   Arrows: {
@@ -215,6 +224,7 @@ const styles = StyleSheet.create({
   optionButtonsText: {
     color: '#eeeeee',
     fontSize: 20,
+    fontWeight: 'bold',
   },
 
   //---------------------------------------------------------
