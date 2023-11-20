@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { auth } from '../config/firebase';
 import { useNavigation } from '@react-navigation/native';
 import { signOut, deleteUser } from 'firebase/auth';
@@ -48,19 +48,31 @@ const Profile = () => {
     <View>
       <Text>Opção Selecionada: {opcaoSelecionada}</Text>
 
-      <TouchableOpacity onPress={handleLogout}>
-        <Text>Logout</Text>
+      <TouchableOpacity style={styles.botao} onPress={handleLogout}>
+        <Text style={styles.texto}>Logout</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={handleDeleteCurrentUser}>
-        <Text>Excluir Conta</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => handlePress('Opção 3')}>
-        <Text>Opção 3</Text>
+      <TouchableOpacity style={styles.botao} onPress={handleDeleteCurrentUser}>
+        <Text style={styles.texto}>Excluir Conta</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  botao:{
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'blue',
+    width:100,
+    height:30,
+    margin: 30,
+  },
+
+  texto:{
+    color: 'white',
+  }
+})
 
 export default Profile;
