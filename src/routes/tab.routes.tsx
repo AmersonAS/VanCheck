@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
-import Notifications from '../screens/Notifications';
+import Options from '../screens/Options';
 import Profile from '../screens/Profile';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -10,7 +10,6 @@ const Tab = createBottomTabNavigator();
 function TabRoutes() {
   return (
     <Tab.Navigator
-    initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -28,24 +27,7 @@ function TabRoutes() {
       }}
     >
       <Tab.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size, focused }) => {
-            if (focused) {
-              return <Ionicons name="notifications" size={size} color={'#F39422'} />;
-            }
-
-            return (
-              <Ionicons name="notifications-outline" size={size} color={'#EEEEEE'} />
-            );
-          },
-        }}
-      />
-
-      <Tab.Screen
-        name="Home"
+        name="HomeTab"
         component={Home}
         options={{
           headerShown: false,
@@ -78,6 +60,22 @@ function TabRoutes() {
         }}
       />
 
+      <Tab.Screen
+        name="Options"
+        component={Options}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size, focused }) => {
+            if (focused) {
+              return <Ionicons name="settings" size={size} color={'#F39422'} />;
+            }
+
+            return (
+              <Ionicons name="settings-outline" size={size} color={'#EEEEEE'} />
+            );
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 }

@@ -1,5 +1,6 @@
 import {
   Image,
+  Button,
   StyleSheet,
   Text,
   ScrollView,
@@ -14,7 +15,6 @@ import React, { useState, useEffect } from 'react';
 import { firestore } from '../config/firebase';
 import { auth } from '../config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
-import { BlurView } from 'expo-blur';
 
 export default function Home({ route }) {
   const [userName, setUserName] = useState('');
@@ -69,21 +69,15 @@ export default function Home({ route }) {
         <Text style={styles.TextPassageiro}>Passageiro | {userName} </Text>
       </View>
 
+      <View style={styles.transparentBar}>
+        <Text style={styles.textViagens}>Viagens</Text>
+      </View>
+
       <View style={styles.content}>
         <ImageBackground
           source={require('../../assets/BackImage-Home.png')}
           style={styles.backImage}
         >
-          <View style={styles.transparentBar}>
-            <BlurView
-            style={styles.blurContainer}
-            intensity={6}
-            tint="default"
-            >
-              <Text style={styles.textViagens}>Viagens</Text>
-            </BlurView>
-          </View>
-
           <ScrollView style={{ width: '100%' }}>
             <View style={styles.ScrollTest}>{/*CONTEÚDO DA HOME*/}</View>
           </ScrollView>
@@ -133,16 +127,10 @@ const styles = StyleSheet.create({
   },
 
   transparentBar: {
-    height: '9%',
-    width: '100%',
-  },
-
-  blurContainer: {
-    flex: 1,
-    borderBottomWidth: 0.25,
-    borderColor: 'rgba(255, 255, 255, 0.05)',
+    padding: 15,
     alignItems: 'center',
-    padding: 15, 
+    width: '100%',
+    backgroundColor: 'rgba(38, 39, 50, 0.3)',
   },
 
   textViagens: {

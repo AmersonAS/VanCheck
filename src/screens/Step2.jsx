@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { BlurView } from 'expo-blur';
 
 export default function Step2() {
   const [pressed, setPressed] = useState(false);
@@ -54,62 +53,43 @@ export default function Step2() {
           <View style={styles.StepButtons}>
             <TouchableOpacity
               onPress={handlePress}
-              style={[
-                styles.option, 
-                pressed && styles.activiOption
-              ]}
+              style={[styles.option, pressed && styles.activiOption]}
             >
-              <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
-                  <Image
-                    style={styles.Imagess}
-                    source={require('../../assets/Steps/FavipImage.png')}
-                  />
-                  <Text style={styles.optionButtonsText}>Unifavip Wyden</Text>
-              </BlurView>
+              <Image
+                style={styles.Imagess}
+                source={require('../../assets/Steps/FavipImage.png')}
+              />
+              <Text style={styles.optionButtonsText}>Unifavip Wyden</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={handlePress}
               style={[
                 styles.option,
-                pressed && styles.activiOption
-              ]}
-            >
-              <BlurView
-                style={styles.blurContainer}
-                intensity={7}
-                tint="default"
-              >
-                <Image
-                  style={styles.Imagess}
-                  source={require('../../assets/Steps/NassauImage.png')}
-                />
-                <Text style={styles.optionButtonsText}>Uninassau</Text>
-              </BlurView>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={handlePress}
-              style={[
-                styles.option,
+                styles.option2,
                 pressed && styles.activiOption,
               ]}
             >
-              <BlurView
-                style={styles.blurContainer}
-                intensity={7}
-                tint="default"
-              >
-                <Image
-                  style={styles.Imagess}
-                  source={require('../../assets/Steps/AscesImage.png')}
-                />
-                <Text style={styles.optionButtonsText}>Asces Unita</Text>
-              </BlurView>
+              <Image
+                style={styles.Imagess}
+                source={require('../../assets/Steps/NassauImage.png')}
+              />
+              <Text style={styles.optionButtonsText}>Uninassau</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={handlePress}
+              style={[
+                styles.option,
+                styles.option2,
+                pressed && styles.activiOption,
+              ]}
+            >
+              <Image
+                style={styles.Imagess}
+                source={require('../../assets/Steps/AscesImage.png')}
+              />
+              <Text style={styles.optionButtonsText}>Asces Unita</Text>
             </TouchableOpacity>
           </View>
 
@@ -159,7 +139,7 @@ const styles = StyleSheet.create({
   title: {
     flexDirection: 'row',
     marginTop: 65,
-    left: '3%',
+    left: '5%',
     width: '100%',
   },
 
@@ -178,33 +158,54 @@ const styles = StyleSheet.create({
   StepButtons: {
     alignItems: 'center',
   },
-  
+
   option: {
-    width: 330,
-    height: 80,
-    borderRadius: 14,
-    overflow: 'hidden',
-    marginBottom: 30,
-    borderWidth: 0.1,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
-  },
-
-  activiOption: {
-    width: 330,
-    height: 80,
-    borderRadius: 14,
-    overflow: 'hidden',
-    marginBottom: 30,
-    borderWidth: 1,
-    borderColor: '#F39422',
-  },
-
-  blurContainer: {
-    flex: 1,
-    paddingHorizontal: 60,
+    paddingHorizontal: 70,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    backgroundColor: '#1A1B28',
+    width: 330,
+    height: 80,
+    borderRadius: 14,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgba(0, 0, 0, 0.3)',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+      },
+      android: {
+        elevation: 5,
+      },
+    }),
+  },
+  option2: {
+    marginTop: 30,
+  },
+  activiOption: {
+    borderWidth: 1,
+    borderColor: '#F39422',
+
+    paddingHorizontal: 70,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#1A1B28',
+    width: 330,
+    height: 80,
+    borderRadius: 14,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgba(0, 0, 0, 0.3)',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+      },
+      android: {
+        elevation: 5,
+      },
+    }),
   },
 
   Imagess: {
@@ -215,7 +216,6 @@ const styles = StyleSheet.create({
   optionButtonsText: {
     color: '#eeeeee',
     fontSize: 20,
-    fontWeight: 'bold',
   },
 
   //---------------------------------------------------------
