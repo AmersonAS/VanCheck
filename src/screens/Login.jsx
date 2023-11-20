@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   KeyboardAvoidingView,
+  ImageBackground
 } from 'react-native';
 import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -59,70 +60,69 @@ export default function Login() {
         colors={['#293A80', '#010038']}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
-      ></LinearGradient>
+      />
 
       <Image
         style={styles.Logo}
         source={require('../../assets/Van-Check-Icon.png')}
       />
+        <View style={styles.formContainer}>
+          <View>
+            <TextInput
+              style={styles.textInput}
+              placeholder="E-mail"
+              placeholderTextColor="#84848B"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoComplete="email"
+              onChangeText={(text) => setEmail(text)}
+              value={email}
+            />
+            <TextInput
+              style={styles.textInput}
+              placeholder="Senha"
+              placeholderTextColor="#84848B"
+              autoCapitalize="none"
+              secureTextEntry={true} // Definir para true para ocultar a senha
+              onChangeText={(text) => setPassword(text)}
+              value={password}
+            />
 
-      <View style={styles.formContainer}>
-        <View>
-          <TextInput
-            style={styles.textInput}
-            placeholder="E-mail"
-            placeholderTextColor="#84848B"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoComplete="email"
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-          />
-          <TextInput
-            style={styles.textInput}
-            placeholder="Senha"
-            placeholderTextColor="#84848B"
-            autoCapitalize="none"
-            secureTextEntry={true} // Definir para true para ocultar a senha
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-          />
+            {errorLogin === true ? (
+              <View style={styles.contentAlert}>
+                <MaterialCommunityIcons
+                  name="alert-circle"
+                  size={24}
+                  color="#F39422"
+                />
+                <Text style={styles.warningAlert}>e-mail ou senha inválidos</Text>
+              </View>
+            ) : (
+              <View />
+            )}
 
-          {errorLogin === true ? (
-            <View style={styles.contentAlert}>
-              <MaterialCommunityIcons
-                name="alert-circle"
-                size={24}
-                color="#F39422"
-              />
-              <Text style={styles.warningAlert}>e-mail ou senha inválidos</Text>
-            </View>
-          ) : (
-            <View />
-          )}
-
-          <TouchableOpacity onPress={handleForgotPassword}>
-            <Text style={styles.text}>Esqueceu sua senha?</Text>
-          </TouchableOpacity>
-
-          {email === '' || password === '' ? (
-            <TouchableOpacity style={styles.button} disabled={true}>
-              <Text style={styles.buttonText}>Entrar</Text>
+            <TouchableOpacity onPress={handleForgotPassword}>
+              <Text style={styles.text}>Esqueceu sua senha?</Text>
             </TouchableOpacity>
-          ) : (
-            <TouchableOpacity style={styles.button} onPress={loginFirebase}>
-              <Text style={styles.buttonText}>Entrar</Text>
-            </TouchableOpacity>
-          )}
+
+            {email === '' || password === '' ? (
+              <TouchableOpacity style={styles.button} disabled={true}>
+                <Text style={styles.buttonText}>Entrar</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity style={styles.button} onPress={loginFirebase}>
+                <Text style={styles.buttonText}>Entrar</Text>
+              </TouchableOpacity>
+            )}
+          </View>
         </View>
-      </View>
 
-      <View style={styles.textBottom}>
-        <Text style={styles.beforeLink}>Não possui conta? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-          <Text style={styles.link}>Cadastre-se</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.textBottom}>
+          <Text style={styles.beforeLink}>Não possui conta? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+            <Text style={styles.link}>Cadastre-se</Text>
+          </TouchableOpacity>
+        </View>
     </KeyboardAvoidingView>
   );
 }
@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: 'bold',
     color: 'white',
+    fontSize: 15,
   },
 
   textBottom: {
@@ -195,10 +196,14 @@ const styles = StyleSheet.create({
   },
 
   beforeLink: {
+    fontSize: 13,
+    fontWeight: 'bold',
     color: '#EEEEEE',
   },
 
   link: {
+    fontSize: 13,
+    fontWeight: 'bold',
     textDecorationLine: 'underline',
     color: '#F39422',
   },
