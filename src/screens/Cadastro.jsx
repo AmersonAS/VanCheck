@@ -15,6 +15,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { auth } from '../config/firebase';
 import { firestore } from '../config/firebase';
 import { doc, setDoc, collection } from 'firebase/firestore';
+import { TextInputMask } from 'react-native-masked-text';
 
 export default function Cadastro() {
   const navigation = useNavigation();
@@ -158,21 +159,30 @@ export default function Cadastro() {
         <View />
       )}
 
-      <TextInput
+      <TextInputMask
         style={styles.textInput}
+        type="datetime"
+        options={{
+          format: 'DD/MM/YYYY',
+        }}
         keyboardType="numeric"
         placeholder="Nascimento"
         onChangeText={(date) => setFormData({ ...formData, birthDate: date })}
         value={formData.birthDate}
       />
-      <TextInput
+      <TextInputMask
         style={styles.textInput}
         keyboardType="phone-pad"
+        type="cel-phone"
         placeholder="Telefone"
+        options={{
+          maskType: 'BRL',
+          withDDD: true,
+          dddMask: '(81) ',
+        }}
         onChangeText={(number) =>
           setFormData({ ...formData, phoneNumber: number })
         }
-        value={formData.phoneNumber}
       />
 
       <View style={styles.checkBox}>
