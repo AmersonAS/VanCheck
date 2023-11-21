@@ -46,7 +46,7 @@ export default function Step3() {
             <Text style={styles.bTitleStep3}>Revise </Text>
             <Text style={styles.TitleStep3}>as informações</Text>
           </View>
- 
+  
           <View
             style={styles.blurContainer}
             intensity={7}
