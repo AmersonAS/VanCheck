@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { BlurView } from 'expo-blur';
 
 export default function Step3() {
   const [pressed, setPressed] = useState(false);
@@ -54,16 +53,13 @@ export default function Step3() {
           <ScrollView style={{ marginTop: '10%', width: '100%' }}>
             <View style={styles.StepButtons}>
 
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
               <TouchableOpacity
                 onPress={handlePress}
                 activeOpacity={0.9}
                 style={[styles.option, pressed && styles.activiOption]}
               >
-                <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <View style={styles.NamePoint}>
                     <Text style={styles.PointText}>BADU</Text>
                   </View>
@@ -78,19 +74,15 @@ export default function Step3() {
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
                   </View>
-                </BlurView>
               </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
               <TouchableOpacity
                 onPress={handlePress}
                 activeOpacity={0.9}
                 style={[styles.option, pressed && styles.activiOption]}
               >
-                <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <View style={styles.NamePoint}>
                     <Text style={styles.PointText}>AABB</Text>
                   </View>
@@ -105,19 +97,15 @@ export default function Step3() {
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
                   </View>
-                </BlurView>
               </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
               <TouchableOpacity
                 onPress={handlePress}
                 activeOpacity={0.9}
                 style={[styles.option, pressed && styles.activiOption]}
               >
-                <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <View style={styles.NamePoint}>
                     <Text style={styles.PointText}>CONVENIÊNCIA</Text>
                   </View>
@@ -132,19 +120,18 @@ export default function Step3() {
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
                   </View>
-                </BlurView>
               </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
               <TouchableOpacity
                 onPress={handlePress}
                 activeOpacity={0.9}
-                style={[styles.option, pressed && styles.activiOption]}
+                style={[
+                  styles.option, 
+                  pressed && styles.activiOption
+                ]}
               >
-                <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <View style={styles.NamePoint}>
                     <Text style={styles.PointText}>SÃO DOMINGOS</Text>
                   </View>
@@ -159,8 +146,10 @@ export default function Step3() {
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
                   </View>
-                </BlurView>
               </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
             </View>
           </ScrollView>
 
@@ -236,26 +225,30 @@ const styles = StyleSheet.create({
 
   option: {
     width: 330,
-    height: 140,
+    height: 155,
+    backgroundColor: 'rgba(36, 36, 85, 0.6)',
     borderRadius: 14,
-    overflow: 'hidden',
     marginBottom: 30,
-    borderWidth: 0.1,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
+
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: 20,
   },
 
   activiOption: {
     width: 330,
-    height: 140,
+    height: 155,
+    backgroundColor: 'rgba(36, 36, 85, 0.6)',
     borderRadius: 14,
-    overflow: 'hidden',
     marginBottom: 30,
-    borderWidth: 1,
-    borderColor: '#F39422',
-  },
 
-  blurContainer: {
-    flex: 1,
+    borderWidth: 1.5,
+    borderColor: '#F39422',
+
     alignItems: 'flex-start',
     flexDirection: 'column',
     justifyContent: 'space-between',

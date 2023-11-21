@@ -1,6 +1,5 @@
 import {
   Image,
-  Button,
   StyleSheet,
   Text,
   ScrollView,
@@ -15,7 +14,7 @@ import React, { useState, useEffect } from 'react';
 import { firestore } from '../config/firebase';
 import { auth } from '../config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
-import { BlurView } from 'expo-blur';
+
 
 export default function Home({ route }) {
   const [userName, setUserName] = useState('');
@@ -76,13 +75,7 @@ export default function Home({ route }) {
           style={styles.backImage}
         >
           <View style={styles.transparentBar}>
-            <BlurView
-            style={styles.blurContainer}
-            intensity={6}
-            tint="default"
-            >
-              <Text style={styles.textViagens}>Viagens</Text>
-            </BlurView>
+            <Text style={styles.textViagens}>Viagens</Text>
           </View>
 
           <ScrollView style={{ width: '100%' }}>
@@ -103,6 +96,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  gradientBackground: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  },
+
+//---------------------------------------------------------
+
   header: {
     paddingTop: '10%',
     paddingBottom: 12,
@@ -120,36 +124,13 @@ const styles = StyleSheet.create({
     color: '#eeeeee',
   },
 
+  //---------------------------------------------------------
+
   content: {
     flex: 1,
   },
 
-  gradientBackground: {
-    flex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-  },
-
-  transparentBar: {
-    height: '9%',
-    width: '100%',
-  },
-
-  blurContainer: {
-    flex: 1,
-    borderBottomWidth: 0.25,
-    borderColor: 'rgba(255, 255, 255, 0.05)',
-    alignItems: 'center',
-    padding: 15, 
-  },
-
-  textViagens: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  },
+  //---------------------------------------------------------
 
   backImage: {
     justifyContent: 'flex-end',
@@ -159,10 +140,31 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
 
+  //---------------------------------------------------------
+
+  transparentBar: {
+    borderBottomWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
+
+    backgroundColor: 'rgba(36, 36, 85, 0.6)',
+    alignItems: 'center',
+    padding: 15, 
+    width: '100%',
+  },
+
+  textViagens: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+
+  //---------------------------------------------------------
+
   ScrollTest: {
     paddingTop: '3%',
     alignItems: 'center',
   },
+
+  //---------------------------------------------------------
 
   embarcarButton: {
     backgroundColor: '#F39422',

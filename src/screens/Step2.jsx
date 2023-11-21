@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { BlurView } from 'expo-blur';
 
 export default function Step2() {
   const [pressed, setPressed] = useState(false);
@@ -51,6 +50,8 @@ export default function Step2() {
           </View>
 
           <View style={styles.StepButtons}>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
             <TouchableOpacity
               onPress={handlePress}
               style={[
@@ -58,18 +59,14 @@ export default function Step2() {
                 pressed && styles.activiOption
               ]}
             >
-              <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <Image
                     style={styles.Imagess}
                     source={require('../../assets/Steps/FavipImage.png')}
                   />
                   <Text style={styles.optionButtonsText}>Unifavip Wyden</Text>
-              </BlurView>
             </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
             <TouchableOpacity
               onPress={handlePress}
@@ -78,18 +75,14 @@ export default function Step2() {
                 pressed && styles.activiOption
               ]}
             >
-              <BlurView
-                style={styles.blurContainer}
-                intensity={7}
-                tint="default"
-              >
                 <Image
                   style={styles.Imagess}
                   source={require('../../assets/Steps/NassauImage.png')}
                 />
                 <Text style={styles.optionButtonsText}>Uninassau</Text>
-              </BlurView>
             </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
             <TouchableOpacity
               onPress={handlePress}
@@ -98,18 +91,15 @@ export default function Step2() {
                 pressed && styles.activiOption,
               ]}
             >
-              <BlurView
-                style={styles.blurContainer}
-                intensity={7}
-                tint="default"
-              >
                 <Image
                   style={styles.Imagess}
                   source={require('../../assets/Steps/AscesImage.png')}
                 />
                 <Text style={styles.optionButtonsText}>Asces Unita</Text>
-              </BlurView>
             </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
           </View>
 
           <View style={styles.buttonsBackNext}>
@@ -181,25 +171,29 @@ const styles = StyleSheet.create({
   option: {
     width: 330,
     height: 80,
+    backgroundColor: 'rgba(36, 36, 85, 0.6)',
     borderRadius: 14,
-    overflow: 'hidden',
     marginBottom: 30,
-    borderWidth: 0.1,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
+
+    paddingHorizontal: 60,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 
   activiOption: {
     width: 330,
     height: 80,
+    backgroundColor: 'rgba(36, 36, 85, 0.6)',
     borderRadius: 14,
-    overflow: 'hidden',
     marginBottom: 30,
-    borderWidth: 1,
-    borderColor: '#F39422',
-  },
 
-  blurContainer: {
-    flex: 1,
+    borderWidth: 1.5,
+    borderColor: '#F39422',
+
     paddingHorizontal: 60,
     alignItems: 'center',
     flexDirection: 'row',

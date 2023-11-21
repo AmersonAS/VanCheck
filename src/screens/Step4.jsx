@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { BlurView } from 'expo-blur';
+
 
 export default function Step3() {
   const [pressed, setPressed] = useState(false);
@@ -19,6 +19,12 @@ export default function Step3() {
   };
 
   const navigation = useNavigation();
+
+  const irparaStep5 = () => {
+    navigation.navigate('Step5');
+  };
+
+  
   const voltar = () => {
     navigation.goBack();
   };
@@ -33,7 +39,7 @@ export default function Step3() {
 
       <ImageBackground
         style={styles.backgroundImage}
-        source={require('../../assets/Steps/BackImage-Step3.png')}
+        source={require('../../assets/Steps/BackImage-Step4.png')}
       >
         <View style={styles.insideConteiner}>
           <View style={styles.title}>
@@ -41,7 +47,7 @@ export default function Step3() {
             <Text style={styles.TitleStep3}>as informações</Text>
           </View>
 
-          <BlurView
+          <View
             style={styles.blurContainer}
             intensity={7}
             tint="default"
@@ -49,7 +55,7 @@ export default function Step3() {
             <View>
               <Text>Ponto de embarque:</Text>
             </View>
-          </BlurView>
+          </View>
           
           <View 
             style={styles.buttonsBackConfirm}
@@ -57,7 +63,7 @@ export default function Step3() {
             <TouchableOpacity style={styles.BackButton} onPress={voltar}>
               <Text style={styles.buttonText}>Voltar</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.ConfirmButton}>
+            <TouchableOpacity style={styles.ConfirmButton} onPress={irparaStep5}>
               <Text style={styles.buttonText}>Confirmar</Text>
             </TouchableOpacity>
           </View>
@@ -100,7 +106,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 65,
     marginBottom: 50,
-    left: '3%',
+    justifyContent: 'center',
     width: '100%',
   },
 

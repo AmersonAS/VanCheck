@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { BlurView } from 'expo-blur';
 
 export default function Step1() {
   const [pressed, setPressed] = useState(false);
@@ -58,17 +57,11 @@ export default function Step1() {
                   pressed && styles.activiOption
                 ]}
               >
-                <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <Image
                     style={styles.Arrows}
                     source={require('../../assets/Steps/Arrow_GoBack.png')}
                   />
                   <Text style={styles.optionButtonsText}>Vai e volta</Text>
-                </BlurView>
               </TouchableOpacity>
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
@@ -80,17 +73,11 @@ export default function Step1() {
                   pressed && styles.activiOption,
                 ]}
               >
-                <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <Image
                     style={styles.Arrows}
                     source={require('../../assets/Steps/Arrow_Go.png')}
                   />
                   <Text style={styles.optionButtonsText}>Só vai</Text>
-                </BlurView>
               </TouchableOpacity>
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
@@ -102,17 +89,11 @@ export default function Step1() {
                   pressed && styles.activiOption,
                 ]}
               >
-                <BlurView
-                  style={styles.blurContainer}
-                  intensity={7}
-                  tint="default"
-                >
                   <Image
                     style={styles.Arrows}
                     source={require('../../assets/Steps/Arrow_Back.png')}
                   />
                   <Text style={styles.optionButtonsText}>Só volta</Text>
-                </BlurView>
               </TouchableOpacity>
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
@@ -190,25 +171,29 @@ const styles = StyleSheet.create({
   option: {
     width: 330,
     height: 80,
+    backgroundColor: 'rgba(36, 36, 85, 0.6)',
     borderRadius: 14,
-    overflow: 'hidden',
     marginBottom: 30,
-    borderWidth: 0.1,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
+
+    paddingHorizontal: 60,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 
   activiOption: {
     width: 330,
     height: 80,
+    backgroundColor: 'rgba(36, 36, 85, 0.6)',
     borderRadius: 14,
-    overflow: 'hidden',
     marginBottom: 30,
-    borderWidth: 1,
-    borderColor: '#F39422',
-  },
 
-  blurContainer: {
-    flex: 1,
+    borderWidth: 1.5,
+    borderColor: '#F39422',
+
     paddingHorizontal: 60,
     alignItems: 'center',
     flexDirection: 'row',
