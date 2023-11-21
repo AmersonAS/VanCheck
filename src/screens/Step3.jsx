@@ -64,12 +64,8 @@ export default function Step3() {
                     <Text style={styles.PointText}>BADU</Text>
                   </View>
 
-                  <View style={styles.AddressPoint}>
-                    <View style={styles.aAlign}>
-                      <Text style={styles.a}>Logradouro</Text>
-                      <Text style={styles.a}> - </Text>
-                      <Text style={styles.a}>N°</Text>
-                    </View>
+                  <View>
+                    <Text style={styles.a}>Logradouro - N°</Text>
                     <Text style={styles.a}>Bairro</Text>
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
@@ -87,12 +83,8 @@ export default function Step3() {
                     <Text style={styles.PointText}>AABB</Text>
                   </View>
 
-                  <View style={styles.AddressPoint}>
-                    <View style={styles.aAlign}>
-                      <Text style={styles.a}>Logradouro</Text>
-                      <Text style={styles.a}> - </Text>
-                      <Text style={styles.a}>N°</Text>
-                    </View>
+                  <View>
+                    <Text style={styles.a}>Logradouro - N°</Text>
                     <Text style={styles.a}>Bairro</Text>
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
@@ -110,12 +102,8 @@ export default function Step3() {
                     <Text style={styles.PointText}>CONVENIÊNCIA</Text>
                   </View>
 
-                  <View style={styles.AddressPoint}>
-                    <View style={styles.aAlign}>
-                      <Text style={styles.a}>Logradouro</Text>
-                      <Text style={styles.a}> - </Text>
-                      <Text style={styles.a}>N°</Text>
-                    </View>
+                  <View>
+                    <Text style={styles.a}>Logradouro - N°</Text>
                     <Text style={styles.a}>Bairro</Text>
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
@@ -136,12 +124,8 @@ export default function Step3() {
                     <Text style={styles.PointText}>SÃO DOMINGOS</Text>
                   </View>
 
-                  <View style={styles.AddressPoint}>
-                    <View style={styles.aAlign}>
-                      <Text style={styles.a}>Logradouro</Text>
-                      <Text style={styles.a}> - </Text>
-                      <Text style={styles.a}>N°</Text>
-                    </View>
+                  <View>
+                    <Text style={styles.a}>Logradouro - N°</Text>
                     <Text style={styles.a}>Bairro</Text>
                     <Text style={styles.a}>Cidade - Estado</Text>
                     <Text style={styles.a}>Horário</Text>
@@ -226,12 +210,12 @@ const styles = StyleSheet.create({
   option: {
     width: 330,
     height: 155,
-    backgroundColor: 'rgba(36, 36, 85, 0.6)',
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
     marginBottom: 30,
 
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.05)',
+    borderColor: 'rgba(255, 255, 255, 0.08)',
 
     alignItems: 'flex-start',
     flexDirection: 'column',
@@ -242,7 +226,7 @@ const styles = StyleSheet.create({
   activiOption: {
     width: 330,
     height: 155,
-    backgroundColor: 'rgba(36, 36, 85, 0.6)',
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
     marginBottom: 30,
 
@@ -269,10 +253,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eeeeee',
     marginBottom: 5,
-  },
-
-  aAlign: {
-    flexDirection: 'row',
   },
 
   a: {

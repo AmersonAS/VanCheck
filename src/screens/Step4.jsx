@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Platform,
   ImageBackground,
+  Image,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
@@ -33,8 +34,8 @@ export default function Step3() {
       <LinearGradient
         style={styles.gradientBackground}
         colors={['#293A80', '#010038']}
-        start={{ x: 0, y: 1.5 }}
-        end={{ x: 0, y: -0.1 }}
+        start={{ x: 0, y: -0.1 }}
+        end={{ x: 0, y: 1.3 }}
       />
 
       <ImageBackground
@@ -48,12 +49,20 @@ export default function Step3() {
           </View>
   
           <View
-            style={styles.blurContainer}
-            intensity={7}
-            tint="default"
+            style={styles.infoContainer}
           >
-            <View>
+            <View
+              style={styles.pontoEmbarque}
+            >
               <Text>Ponto de embarque:</Text>
+              <View>
+                <Image/>
+                <Text></Text>
+                <Text style={styles.a}>Logradouro - N°</Text>
+                <Text style={styles.a}>Bairro</Text>
+                <Text style={styles.a}>Cidade - Estado</Text>
+                <Text style={styles.a}>Horário</Text>
+              </View>
             </View>
           </View>
           
@@ -80,10 +89,8 @@ const styles = StyleSheet.create({
   },
   insideConteiner: {
     flex: 1,
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'relative',
   },
 
   gradientBackground: {
@@ -125,13 +132,22 @@ const styles = StyleSheet.create({
   },
 
   //--------------------------------------------------------------
-   blurContainer: {
+   infoContainer: {
     flex: 1,
-    width: '90%',
-    alignItems: 'flex-start',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    padding: 3,
+
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+
+    width: 380,
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
+    borderRadius: 14,
+  },
+
+  //--------------------------------------------------------------
+
+  a: {
+    color: '#eeeeee',
+    fontWeight: 'regular',
   },
 
   //--------------------------------------------------------------
@@ -143,7 +159,7 @@ const styles = StyleSheet.create({
 
   BackButton: {
     backgroundColor: '#1A1B28',
-    borderRadius: 15,
+    borderRadius: 14,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '5%',
@@ -164,7 +180,7 @@ const styles = StyleSheet.create({
 
   ConfirmButton: {
     backgroundColor: '#F39422',
-    borderRadius: 15,
+    borderRadius: 14,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '5%',

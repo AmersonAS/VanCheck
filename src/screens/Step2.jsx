@@ -171,12 +171,12 @@ const styles = StyleSheet.create({
   option: {
     width: 330,
     height: 80,
-    backgroundColor: 'rgba(36, 36, 85, 0.6)',
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
     marginBottom: 30,
 
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.05)',
+    borderColor: 'rgba(255, 255, 255, 0.08)',
 
     paddingHorizontal: 60,
     alignItems: 'center',
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   activiOption: {
     width: 330,
     height: 80,
-    backgroundColor: 'rgba(36, 36, 85, 0.6)',
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
     marginBottom: 30,
 

@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.05)',
 
-    backgroundColor: 'rgba(36, 36, 85, 0.6)',
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
     alignItems: 'center',
     padding: 15, 
     width: '100%',
