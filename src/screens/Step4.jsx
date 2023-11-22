@@ -46,19 +46,22 @@ export default function Step3() {
           <View style={styles.title}>
             <Text style={styles.bTitleStep3}>Revise </Text>
             <Text style={styles.TitleStep3}>as informações</Text>
-          </View>
+          </View> 
   
           <View
             style={styles.infoContainer}
           >
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
             <View
-              style={styles.pontoEmbarque}
+              style={styles.viewDasInfo}
             >
               <Text
                 style={{color: '#eeeeee', fontSize: 13,}}
               >Ponto de embarque:</Text>
               <View style={styles.infoEmbarque}>
-                <Image style={{width: 15, height: 90, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/InfoPoint.png')}/>
+                <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
 
                 <View>
                   <Text style={styles.aTitle}>BADU</Text>
@@ -69,6 +72,37 @@ export default function Step3() {
                 </View>
               </View>
             </View>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
+            <View
+              style={styles.viewDasInfo}
+            >
+              <Text
+                style={{color: '#eeeeee', fontSize: 13,}}
+              >Viagem:</Text>
+              <View style={styles.infoVaiVolta}>
+                <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Arrow_GoBackOrange.png')}/>
+                <Text style={styles.aTitle}>Vai e volta</Text>
+              </View>
+            </View>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
+            <View
+              style={styles.viewDasInfo}
+            >
+              <Text
+                style={{color: '#eeeeee', fontSize: 13,}}
+              >Ponto de desembarque:</Text>
+              <View style={styles.infoVaiVolta}>
+                <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
+                <Text style={styles.aTitle}>Unifavip Wyden</Text>
+              </View>
+            </View>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
           </View>
           
           <View 
@@ -144,19 +178,37 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255, 0.08)',
 
     width: 380,
+    padding: 20,
     backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
   },
 
   //--------------------------------------------------------------
-  pontoEmbarque:{
-    alignItems: 'center',
-    backgroundColor: 'rgba(60, 60, 158, 0.3)',
+  viewDasInfo:{
+    paddingBottom: 20,
+    marginBottom: 20,
+
+    borderBottomWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: 'rgba(255, 255, 255, 0.2)',
   },
+
+  //--------------------------------------------------------------
 
   infoEmbarque:{
     flexDirection: 'row',
+
+    marginHorizontal: 20,
   },
+
+  infoVaiVolta:{
+    flexDirection: 'row',
+    alignItems: 'center',
+
+    marginHorizontal: 20,
+  },
+
+  
 
   //--------------------------------------------------------------
   aTitle:{

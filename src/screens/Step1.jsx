@@ -17,6 +17,7 @@ export default function Step1() {
   const handlePress = () => {
     setPressed(!pressed);
   };
+  
   const navigation = useNavigation();
   const irparaStep2 = () => {
     navigation.navigate('Step2');
@@ -50,7 +51,7 @@ export default function Step1() {
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-              <TouchableOpacity
+               <TouchableOpacity
                 onPress={handlePress}
                 style={[
                   styles.option, 
@@ -63,6 +64,7 @@ export default function Step1() {
                   />
                   <Text style={styles.optionButtonsText}>Vai e volta</Text>
               </TouchableOpacity>
+
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
