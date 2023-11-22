@@ -49,59 +49,66 @@ export default function Step3() {
           </View> 
   
           <View
-            style={styles.infoContainer}
+            style={styles.box}
           >
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
             <View
-              style={styles.viewDasInfo}
+              style={styles.infoBox}
             >
-              <Text
-                style={{color: '#eeeeee', fontSize: 13,}}
-              >Ponto de embarque:</Text>
-              <View style={styles.infoEmbarque}>
-                <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
+              <View
+                style={styles.informacoes}
+              >
+                <Text
+                  style={{color: '#eeeeee', fontSize: 13,}}
+                >Ponto de embarque:</Text>
+                <View style={styles.infoEmbarque}>
+                  <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
 
-                <View>
-                  <Text style={styles.aTitle}>BADU</Text>
-                  <Text style={styles.a}>Av. Pref. Braz de Lira</Text>
-                  <Text style={styles.a}>Malaquias Cardoso</Text>
-                  <Text style={styles.a}>Santa Cruz do Capibaribe - PE</Text>
-                  <Text style={styles.a}>17:40</Text>
+                  <View>
+                    <Text style={styles.aTitle}>BADU</Text>
+                    <Text style={styles.a}>Av. Pref. Braz de Lira</Text>
+                    <Text style={styles.a}>Malaquias Cardoso</Text>
+                    <Text style={styles.a}>Santa Cruz do Capibaribe - PE</Text>
+                    <Text style={styles.a}>17:40</Text>
+                  </View>
                 </View>
               </View>
-            </View>
 
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+  {/*----------------------------------------------------------------------------------------------------------------------*/}
+
+              <View
+                style={styles.informacoes}
+              >
+                <Text
+                  style={{color: '#eeeeee', fontSize: 13,}}
+                >Viagem:</Text>
+                <View style={styles.infoVaiVolta_Desembarque}>
+                  <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Arrow_GoBackOrange.png')}/>
+                  <Text style={styles.aTitle}>Vai e volta</Text>
+                </View>
+              </View>
+
+  {/*----------------------------------------------------------------------------------------------------------------------*/}
+
+              <View
+                style={styles.uInformacoes}
+              >
+                <Text
+                  style={{color: '#eeeeee', fontSize: 13,}}
+                >Ponto de desembarque:</Text>
+                <View style={styles.infoVaiVolta_Desembarque}>
+                  <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
+                  <Text style={styles.aTitle}>Unifavip Wyden</Text>
+                </View>
+              </View>
+
+  {/*----------------------------------------------------------------------------------------------------------------------*/}
+            </View>
 
             <View
-              style={styles.viewDasInfo}
+              style={styles.imageBox}
             >
-              <Text
-                style={{color: '#eeeeee', fontSize: 13,}}
-              >Viagem:</Text>
-              <View style={styles.infoVaiVolta}>
-                <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Arrow_GoBackOrange.png')}/>
-                <Text style={styles.aTitle}>Vai e volta</Text>
-              </View>
-            </View>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-            <View
-              style={styles.viewDasInfo}
-            >
-              <Text
-                style={{color: '#eeeeee', fontSize: 13,}}
-              >Ponto de desembarque:</Text>
-              <View style={styles.infoVaiVolta}>
-                <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
-                <Text style={styles.aTitle}>Unifavip Wyden</Text>
-              </View>
-            </View>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+            <Image style={{width: 100, height: 100}}  source={require('../../assets/Van-Check-Icon.png')}/>
+          </View>
 
           </View>
           
@@ -171,26 +178,45 @@ const styles = StyleSheet.create({
   },
 
   //--------------------------------------------------------------
-   infoContainer: {
+   box: {
     flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
 
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.08)',
-
-    width: 380,
+    width: '90%',
     padding: 20,
     backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
+
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+  },
+
+  infoBox:{
+    width: '100%',
+  },
+
+  imageBox:{
+    flex: 1,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
   },
 
   //--------------------------------------------------------------
-  viewDasInfo:{
+  informacoes:{
     paddingBottom: 20,
     marginBottom: 20,
 
     borderBottomWidth: 1,
     borderStyle: 'dashed',
     borderColor: 'rgba(255, 255, 255, 0.2)',
+  },
+
+  uInformacoes:{
+    paddingBottom: 20,
+    marginBottom: 20,
   },
 
   //--------------------------------------------------------------
@@ -201,7 +227,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
 
-  infoVaiVolta:{
+  infoVaiVolta_Desembarque:{
     flexDirection: 'row',
     alignItems: 'center',
 
