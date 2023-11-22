@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function Step5() {
   const [pressed, setPressed] = useState(false);
@@ -34,33 +34,37 @@ export default function Step5() {
       <LinearGradient
         style={styles.gradientBackground}
         colors={['#293A80', '#010038']}
-        start={{ x: 0, y: 1.5 }}
-        end={{ x: 0, y: -0.1 }}
+        start={{ x: 0, y: -0.1 }}
+        end={{ x: 0, y: 1.3 }}
       />
 
       <ImageBackground
         style={styles.backgroundImage}
         source={require('../../assets/Steps/BackImage-Step5.png')}
-      />
-      
-            <View style={styles.confirmed}>
-            <Animatable.View 
-                animation="bounceIn"
-                duration={1200}
-              >
-                <Ionicons
-                    color={'#F39422'}
-                    name="checkmark-circle"
-                    size={300} 
-                />
-              </Animatable.View>
+      >
 
-              <Text>Viagem Marcada</Text>
-            </View>
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+      
+        <View style={styles.confirmed}>
+          <Animatable.View 
+            animation="bounceIn"
+            duration={1200}
+          >
+            <MaterialCommunityIcons name="check-decagram" size={190} color="#F39422" style={{margin:20}}/>
+          </Animatable.View>
+
+          <Text style={styles.text}>Viagem marcada!</Text>
+        </View>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
 
         <TouchableOpacity style={styles.ConfirmButton} onPress={irparaHome}>
-          <Text style={styles.buttonText}>OK!</Text>
+          <Text style={styles.buttonText}>OK</Text>
         </TouchableOpacity>
+
+{/*----------------------------------------------------------------------------------------------------------------------*/}
+
+      </ImageBackground>
     </View>
   );
   }
@@ -69,13 +73,6 @@ export default function Step5() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  insideConteiner: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
   },
 
   gradientBackground: {
@@ -90,17 +87,35 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: 'cover',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
+
+  //--------------------------------------------------------------
+
+  confirmed:{
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  text:{
+    color: '#eeeeee',
+    fontWeight: 'bold',
+    fontSize: 25,
+
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 10,
+  },
+  
 
   //--------------------------------------------------------------
   ConfirmButton: {
     backgroundColor: '#F39422',
-    borderRadius: 15,
+    borderRadius: 14,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '5%',
-    marginLeft: 30,
     width: 145,
     height: 50,
     ...Platform.select({
@@ -121,9 +136,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
-  confirmed:{
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center' 
-  }
 });

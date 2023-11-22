@@ -61,7 +61,7 @@ export default function Step3() {
                   style={{color: '#eeeeee', fontSize: 13,}}
                 >Ponto de embarque:</Text>
                 <View style={styles.infoEmbarque}>
-                  <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
+                  <Image style={styles.aImage}  source={require('../../assets/Steps/Room.png')}/>
 
                   <View>
                     <Text style={styles.aTitle}>BADU</Text>
@@ -82,7 +82,7 @@ export default function Step3() {
                   style={{color: '#eeeeee', fontSize: 13,}}
                 >Viagem:</Text>
                 <View style={styles.infoVaiVolta_Desembarque}>
-                  <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Arrow_GoBackOrange.png')}/>
+                  <Image style={styles.aImage} source={require('../../assets/Steps/Arrow_GoBackOrange.png')}/>
                   <Text style={styles.aTitle}>Vai e volta</Text>
                 </View>
               </View>
@@ -96,7 +96,7 @@ export default function Step3() {
                   style={{color: '#eeeeee', fontSize: 13,}}
                 >Ponto de desembarque:</Text>
                 <View style={styles.infoVaiVolta_Desembarque}>
-                  <Image style={{width: 18, height: 18, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/Room.png')}/>
+                  <Image style={styles.aImage}  source={require('../../assets/Steps/Room.png')}/>
                   <Text style={styles.aTitle}>Unifavip Wyden</Text>
                 </View>
               </View>
@@ -237,10 +237,21 @@ const styles = StyleSheet.create({
   
 
   //--------------------------------------------------------------
+  aImage:{
+    width: 18, 
+    height: 18, 
+    marginRight: '2%', 
+    margin: 6,
+  },
+  
   aTitle:{
     color: '#F39422',
     fontSize: 23,
     fontWeight: 'bold',
+
+    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 10,
   },
 
   a: {
