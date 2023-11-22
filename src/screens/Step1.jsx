@@ -18,7 +18,7 @@ export default function Step1() {
   const handlePress = (optionId) => {
     setPressed(optionId);
   };
-  
+
   const navigation = useNavigation();
   const irparaStep2 = () => {
     navigation.navigate('Step2');
@@ -49,30 +49,25 @@ export default function Step1() {
             </View>
 
             <View style={styles.StepButtons}>
+              {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+              <View>
+                {selectionOptions.map((option) => (
+                  <TouchableOpacity
+                    key={option.id}
+                    onPress={() => handlePress(option.id)}
+                    style={[
+                      styles.buttonOption,
+                      pressed === option.id && styles.activiOption,
+                    ]}
+                  >
+                    <Image style={styles.Arrows} source={option.img} />
+                    <Text style={styles.optionButtonsText}>{option.text}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
 
-               <View>
-                  {selectionOptions.map((option) => (
-                    <TouchableOpacity
-                      key={option.id}
-                      onPress={() => handlePress(option.id)}
-                      style={[
-                        styles.buttonOption,
-                        pressed  === option.id && styles.activiOption
-                      ]}
-                    >
-                      <Image
-                        style={styles.Arrows}
-                        source={option.img}
-                      />
-                      <Text style={styles.optionButtonsText}>{option.text}</Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>           
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
+              {/*----------------------------------------------------------------------------------------------------------------------*/}
             </View>
 
             <View style={styles.buttonsBackNext}>
@@ -241,4 +236,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-
