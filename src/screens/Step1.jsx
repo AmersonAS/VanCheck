@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
 
   BackButton: {
     backgroundColor: '#1A1B28',
-    borderRadius: 15,
+    borderRadius: 14,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '5%',
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
 
   NextButton: {
     backgroundColor: '#F39422',
-    borderRadius: 15,
+    borderRadius: 14,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '5%',

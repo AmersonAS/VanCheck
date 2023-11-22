@@ -54,14 +54,19 @@ export default function Step3() {
             <View
               style={styles.pontoEmbarque}
             >
-              <Text>Ponto de embarque:</Text>
-              <View>
-                <Image/>
-                <Text></Text>
-                <Text style={styles.a}>Logradouro - N°</Text>
-                <Text style={styles.a}>Bairro</Text>
-                <Text style={styles.a}>Cidade - Estado</Text>
-                <Text style={styles.a}>Horário</Text>
+              <Text
+                style={{color: '#eeeeee', fontSize: 13,}}
+              >Ponto de embarque:</Text>
+              <View style={styles.infoEmbarque}>
+                <Image style={{width: 15, height: 90, marginRight: '2%', margin: 6,}}  source={require('../../assets/Steps/InfoPoint.png')}/>
+
+                <View>
+                  <Text style={styles.aTitle}>BADU</Text>
+                  <Text style={styles.a}>Av. Pref. Braz de Lira</Text>
+                  <Text style={styles.a}>Malaquias Cardoso</Text>
+                  <Text style={styles.a}>Santa Cruz do Capibaribe - PE</Text>
+                  <Text style={styles.a}>17:40</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -144,9 +149,25 @@ const styles = StyleSheet.create({
   },
 
   //--------------------------------------------------------------
+  pontoEmbarque:{
+    alignItems: 'center',
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
+  },
+
+  infoEmbarque:{
+    flexDirection: 'row',
+  },
+
+  //--------------------------------------------------------------
+  aTitle:{
+    color: '#F39422',
+    fontSize: 23,
+    fontWeight: 'bold',
+  },
 
   a: {
     color: '#eeeeee',
+    fontSize: 13,
     fontWeight: 'regular',
   },
 
