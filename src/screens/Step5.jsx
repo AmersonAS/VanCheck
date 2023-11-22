@@ -50,7 +50,7 @@ export default function Step5() {
               >
                 <Ionicons
                     color={'#F39422'}
-                    name="checkmark-circle-outline"
+                    name="checkmark-circle"
                     size={300} 
                 />
               </Animatable.View>

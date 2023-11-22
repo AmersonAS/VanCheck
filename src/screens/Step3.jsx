@@ -11,12 +11,13 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { selectionOptions3 } from './data';
 
 export default function Step3() {
-  const [pressed, setPressed] = useState(false);
+  const [pressed, setPressed] = useState(null);
 
-  const handlePress = () => {
-    setPressed(!pressed);
+  const handlePress = (optionId) => {
+    setPressed(optionId);
   };
 
   const navigation = useNavigation();
@@ -54,84 +55,32 @@ export default function Step3() {
             <View style={styles.StepButtons}>
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
+              <View>
+                {selectionOptions3.map((option) => {
+                  return (
+                    <TouchableOpacity
+                    key={option.id}
+                    onPress={() => handlePress(option.id)}
+                    activeOpacity={0.9}
+                    style={[
+                    styles.buttonOption,
+                    pressed  === option.id && styles.activiOption
+                  ]}
+                  >
+                      <View style={styles.NamePoint}>
+                        <Text style={styles.PointText}>{option.ponto}</Text>
+                      </View>
 
-              <TouchableOpacity
-                onPress={handlePress}
-                activeOpacity={0.9}
-                style={[styles.option, pressed && styles.activiOption]}
-              >
-                  <View style={styles.NamePoint}>
-                    <Text style={styles.PointText}>BADU</Text>
-                  </View>
-
-                  <View>
-                    <Text style={styles.a}>Logradouro - N°</Text>
-                    <Text style={styles.a}>Bairro</Text>
-                    <Text style={styles.a}>Cidade - Estado</Text>
-                    <Text style={styles.a}>Horário</Text>
-                  </View>
-              </TouchableOpacity>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-              <TouchableOpacity
-                onPress={handlePress}
-                activeOpacity={0.9}
-                style={[styles.option, pressed && styles.activiOption]}
-              >
-                  <View style={styles.NamePoint}>
-                    <Text style={styles.PointText}>AABB</Text>
-                  </View>
-
-                  <View>
-                    <Text style={styles.a}>Logradouro - N°</Text>
-                    <Text style={styles.a}>Bairro</Text>
-                    <Text style={styles.a}>Cidade - Estado</Text>
-                    <Text style={styles.a}>Horário</Text>
-                  </View>
-              </TouchableOpacity>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-              <TouchableOpacity
-                onPress={handlePress}
-                activeOpacity={0.9}
-                style={[styles.option, pressed && styles.activiOption]}
-              >
-                  <View style={styles.NamePoint}>
-                    <Text style={styles.PointText}>CONVENIÊNCIA</Text>
-                  </View>
-
-                  <View>
-                    <Text style={styles.a}>Logradouro - N°</Text>
-                    <Text style={styles.a}>Bairro</Text>
-                    <Text style={styles.a}>Cidade - Estado</Text>
-                    <Text style={styles.a}>Horário</Text>
-                  </View>
-              </TouchableOpacity>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-              <TouchableOpacity
-                onPress={handlePress}
-                activeOpacity={0.9}
-                style={[
-                  styles.option, 
-                  pressed && styles.activiOption
-                ]}
-              >
-                  <View style={styles.NamePoint}>
-                    <Text style={styles.PointText}>SÃO DOMINGOS</Text>
-                  </View>
-
-                  <View>
-                    <Text style={styles.a}>Logradouro - N°</Text>
-                    <Text style={styles.a}>Bairro</Text>
-                    <Text style={styles.a}>Cidade - Estado</Text>
-                    <Text style={styles.a}>Horário</Text>
-                  </View>
-              </TouchableOpacity>
-
+                      <View>
+                        <Text style={styles.a}>{`${option.logradouro} - N°${option.numero}`}</Text>
+                        <Text style={styles.a}>{option.bairro}</Text>
+                        <Text style={styles.a}>{`${option.cidade} - ${option.estado}`}</Text>
+                        <Text style={styles.a}>{option.horario}</Text>
+                      </View>
+                  </TouchableOpacity>
+                  );
+                })}
+              </View>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
             </View>
@@ -207,7 +156,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  option: {
+  buttonOption: {
     width: 330,
     height: 155,
     backgroundColor: 'rgba(60, 60, 158, 0.3)',

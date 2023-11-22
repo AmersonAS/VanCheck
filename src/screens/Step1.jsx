@@ -10,12 +10,13 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { selectionOptions } from './data';
 
 export default function Step1() {
-  const [pressed, setPressed] = useState(false);
+  const [pressed, setPressed] = useState(null);
 
-  const handlePress = () => {
-    setPressed(!pressed);
+  const handlePress = (optionId) => {
+    setPressed(optionId);
   };
   
   const navigation = useNavigation();
@@ -51,52 +52,24 @@ export default function Step1() {
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-               <TouchableOpacity
-                onPress={handlePress}
-                style={[
-                  styles.option, 
-                  pressed && styles.activiOption
-                ]}
-              >
-                  <Image
-                    style={styles.Arrows}
-                    source={require('../../assets/Steps/Arrow_GoBack.png')}
-                  />
-                  <Text style={styles.optionButtonsText}>Vai e volta</Text>
-              </TouchableOpacity>
-
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-              <TouchableOpacity
-                onPress={handlePress}
-                style={[
-                  styles.option,
-                  pressed && styles.activiOption,
-                ]}
-              >
-                  <Image
-                    style={styles.Arrows}
-                    source={require('../../assets/Steps/Arrow_Go.png')}
-                  />
-                  <Text style={styles.optionButtonsText}>Só vai</Text>
-              </TouchableOpacity>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-              <TouchableOpacity
-                onPress={handlePress}
-                style={[
-                  styles.option,
-                  pressed && styles.activiOption,
-                ]}
-              >
-                  <Image
-                    style={styles.Arrows}
-                    source={require('../../assets/Steps/Arrow_Back.png')}
-                  />
-                  <Text style={styles.optionButtonsText}>Só volta</Text>
-              </TouchableOpacity>
+               <View>
+                  {selectionOptions.map((option) => (
+                    <TouchableOpacity
+                      key={option.id}
+                      onPress={() => handlePress(option.id)}
+                      style={[
+                        styles.buttonOption,
+                        pressed  === option.id && styles.activiOption
+                      ]}
+                    >
+                      <Image
+                        style={styles.Arrows}
+                        source={option.img}
+                      />
+                      <Text style={styles.optionButtonsText}>{option.text}</Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>           
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
@@ -170,7 +143,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  option: {
+  buttonOption: {
     width: 330,
     height: 80,
     backgroundColor: 'rgba(60, 60, 158, 0.3)',

@@ -10,12 +10,13 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { selectionOptions2 } from './data';
 
 export default function Step2() {
-  const [pressed, setPressed] = useState(false);
+  const [pressed, setPressed] = useState(null);
 
-  const handlePress = () => {
-    setPressed(!pressed);
+  const handlePress = (optionId) => {
+    setPressed(optionId);
   };
 
   const navigation = useNavigation();
@@ -52,52 +53,25 @@ export default function Step2() {
           <View style={styles.StepButtons}>
 
 {/*----------------------------------------------------------------------------------------------------------------------*/}
-            <TouchableOpacity
-              onPress={handlePress}
-              style={[
-                styles.option, 
-                pressed && styles.activiOption
-              ]}
-            >
-                  <Image
-                    style={styles.Imagess}
-                    source={require('../../assets/Steps/FavipImage.png')}
-                  />
-                  <Text style={styles.optionButtonsText}>Unifavip Wyden</Text>
-            </TouchableOpacity>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-            <TouchableOpacity
-              onPress={handlePress}
-              style={[
-                styles.option,
-                pressed && styles.activiOption
-              ]}
-            >
-                <Image
-                  style={styles.Imagess}
-                  source={require('../../assets/Steps/NassauImage.png')}
-                />
-                <Text style={styles.optionButtonsText}>Uninassau</Text>
-            </TouchableOpacity>
-
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
-            <TouchableOpacity
-              onPress={handlePress}
-              style={[
-                styles.option,
-                pressed && styles.activiOption,
-              ]}
-            >
-                <Image
-                  style={styles.Imagess}
-                  source={require('../../assets/Steps/AscesImage.png')}
-                />
-                <Text style={styles.optionButtonsText}>Asces Unita</Text>
-            </TouchableOpacity>
-
+            
+              <View>
+                {selectionOptions2.map((option) => (
+                  <TouchableOpacity
+                    key={option.id}
+                    onPress={() => handlePress(option.id)}
+                    style={[
+                      styles.buttonOption,
+                      pressed  === option.id && styles.activiOption
+                    ]}
+                  >
+                    <Image
+                      style={styles.Imagess}
+                      source={option.img}
+                    />
+                    <Text style={styles.optionButtonsText}>{option.text}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>      
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
           </View>
@@ -168,7 +142,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   
-  option: {
+  buttonOption: {
     width: 330,
     height: 80,
     backgroundColor: 'rgba(60, 60, 158, 0.3)',
