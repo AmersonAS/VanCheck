@@ -171,15 +171,15 @@ const styles = StyleSheet.create({
   buttonConteiner:{
     flex: 1,
     width: '100%',
-    marginBottom: '20%',
+    marginBottom: '23%',
 
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
 
   button: {
     width: '80%',
-    height: 60,
+    height: '11.7%',
     backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
 
