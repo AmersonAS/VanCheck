@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   buttonConteiner:{
     flex: 1,
     width: '100%',
-    marginBottom: '23%',
+    marginBottom: '25%',
 
     alignItems: 'center',
     justifyContent: 'space-between',
