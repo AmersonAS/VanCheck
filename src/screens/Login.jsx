@@ -10,7 +10,7 @@ import {
 import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons, Feather } from '@expo/vector-icons';
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -21,6 +21,8 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorLogin, setErrorLogin] = useState('');
+
+  const [hidePass, setHidePass] = useState(true);
 
   const loginFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -52,7 +54,7 @@ export default function Login() {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === 'padding'}
     >
       <LinearGradient
         style={styles.gradientBackground}
@@ -66,36 +68,43 @@ export default function Login() {
         source={require('../../assets/Van-Check-Icon.png')}
       />
 
-      <View style={styles.formContainer}>
-        <View>
-          <TextInput
-            style={styles.textInput}
-            placeholder="E-mail"
-            placeholderTextColor="#84848B"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoComplete="email"
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-          />
-          <TextInput
-            style={styles.textInput}
-            placeholder="Senha"
-            placeholderTextColor="#84848B"
-            autoCapitalize="none"
-            secureTextEntry={true} // Definir para true para ocultar a senha
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-          />
+      <View style={styles.inputView}>
+          <View style={styles.inputArea}>
+            <TextInput
+              style={styles.textInputE}
+              placeholder="E-mail"
+              placeholderTextColor="#84848B"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoComplete="email"
+              onChangeText={(text) => setEmail(text)}
+              value={email}
+            />
+          </View>
+
+          <View style={styles.inputArea}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Senha"
+              placeholderTextColor="#84848B"
+              autoCapitalize="none"
+              secureTextEntry={hidePass} // Definir para true para ocultar a senha
+              onChangeText={(text) => setPassword(text)} 
+              value={password}
+            />
+            <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
+              {hidePass ?
+                <Feather name="eye" size={20} color="#EEEEEE" />
+                :
+                <Feather name="eye-off" size={20} color="#EEEEEE" />
+              }
+            </TouchableOpacity>
+          </View>
 
           {errorLogin === true ? (
             <View style={styles.contentAlert}>
-              <MaterialCommunityIcons
-                name="alert-circle"
-                size={24}
-                color="#F39422"
-              />
-              <Text style={styles.warningAlert}>e-mail ou senha inválidos</Text>
+              <MaterialIcons name="error" size={24} color="#E31144" />
+              <Text style={styles.warningAlert}>E-mail ou senha inválidos!</Text>
             </View>
           ) : (
             <View />
@@ -114,7 +123,6 @@ export default function Login() {
               <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>
           )}
-        </View>
       </View>
 
       <View style={styles.textBottom}>
@@ -152,18 +160,45 @@ const styles = StyleSheet.create({
     height: 110,
   },
 
-  textInput: {
-    width: 265,
-    height: 45,
-    borderWidth: 2,
+  inputView:{
+    width: '60%',
+  },
+
+  inputArea:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    height: 40,
+
     backgroundColor: '#1A1B28',
+    borderWidth: 2,
     borderColor: '#EEEEEE',
     borderRadius: 14,
-    padding: 10,
-    marginTop: 10,
-    marginBottom: 3,
-    color: 'white',
+    
+    marginBottom: 10,
   },
+
+  textInputE: {
+    color: 'white',
+    width: '100%',
+    height: '100%',
+    paddingHorizontal: 5,
+  },
+
+  textInput: {
+    color: 'white',
+    width: '85%',
+    height: '100%',
+    paddingLeft: 5,
+  },
+
+  icon:{
+    width: '15%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   text: {
     textDecorationLine: 'underline',
     color: 'white',
@@ -176,7 +211,7 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 10,
     backgroundColor: '#F39422',
-    width: 265,
+    width: '100%',
     height: 45,
     alignItems: 'center',
     justifyContent: 'center',
@@ -203,18 +238,16 @@ const styles = StyleSheet.create({
     color: '#F39422',
   },
 
+  //---------------------------------------------------------
+
   contentAlert: {
-    // marginLeft: 20,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   warningAlert: {
     paddingLeft: 5,
     fontSize: 14,
-    color: '#F7B564',
-    fontStyle: 'italic',
-    textDecorationLine: 'underline',
+    color: '#E31144',
   },
 });

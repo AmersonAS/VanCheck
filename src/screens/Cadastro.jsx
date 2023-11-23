@@ -109,7 +109,7 @@ export default function Cadastro() {
   return (
     <KeyboardAvoidingView 
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS ==='padding'}
     >
       <LinearGradient
         style={styles.gradientBackground}
