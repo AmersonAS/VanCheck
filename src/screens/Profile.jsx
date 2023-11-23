@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { auth } from '../config/firebase';
 import { useNavigation } from '@react-navigation/native';
 import { signOut, deleteUser } from 'firebase/auth';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
 const Profile = () => {
   const navigation = useNavigation();
@@ -46,58 +47,66 @@ const Profile = () => {
         style={styles.backgroundImage}
         source={require('../../assets/Steps/BackImage-Step5.png')}
       >
-        <View>
-          <View style={styles.header}>
-            <Text>Perfil</Text>
-            <TouchableOpacity style={styles.editImage}>
-              <Image style={{width:100, height:100}} source={require('../../assets/ImageUser.png')}/>
-            </TouchableOpacity>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Perfil</Text>
+          <TouchableOpacity style={styles.editImage}>
+            <Image style={{width:120, height:120}} source={require('../../assets/ImageUser.png')}/>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.content}>
+          <LinearGradient
+            style={styles.gradientBackground}
+            colors={['#293A80', '#010038']}
+            start={{ x: 0, y: -0.1 }}
+            end={{ x: 0, y: 1.5 }}
+          />
+          <View style={styles.user}>
+            <Text style={styles.textUser}>Nome Sobrenome</Text>
           </View>
-
-          <View style={styles.content}>
-            <LinearGradient
-              style={styles.gradientBackground}
-              colors={['#293A80', '#010038']}
-              start={{ x: 0, y: 1.5 }}
-              end={{ x: 0, y: -0.1 }}
-            />
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>Senha</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <MaterialCommunityIcons name="lock" size={20} color="#eeeeee" style={{marginRight:10}}/>
+            <Text style={styles.textButton}>Senha</Text>
+          </TouchableOpacity>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>E-mail</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <MaterialCommunityIcons name="email" size={20} color="#eeeeee" style={{marginRight:10}}/>
+            <Text style={styles.textButton}>E-mail</Text>
+          </TouchableOpacity>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>Contato</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <MaterialCommunityIcons name="phone" size={20} color="#eeeeee" style={{marginRight:10}}/>
+            <Text style={styles.textButton}>Contato</Text>
+          </TouchableOpacity>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>Notificações</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <MaterialCommunityIcons name="bell" size={20} color="#eeeeee" style={{marginRight:10}}/>
+            <Text style={styles.textButton}>Notificações</Text>
+          </TouchableOpacity>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>Contate-nos</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <MaterialCommunityIcons name="contacts" size={20} color="#eeeeee" style={{marginRight:10}}/>
+            <Text style={styles.textButton}>Contate-nos</Text>
+          </TouchableOpacity>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-            <TouchableOpacity style={styles.button} onPress={handleLogout}>
-              <Text style={styles.REDtextButton}>Sair da conta</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handleLogout}>
+            <MaterialCommunityIcons name="logout-variant" size={20} color="#E31144" style={{marginRight:10}}/>
+            <Text style={styles.REDtextButton}>Sair da conta</Text>
+          </TouchableOpacity>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-            <TouchableOpacity style={styles.button} onPress={handleDeleteCurrentUser}>
-              <Text style={styles.REDtextButton}>Excluir Conta</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handleDeleteCurrentUser}>
+            <AntDesign name="delete" size={20} color="#E31144" style={{marginRight:10}}/>
+            <Text style={styles.REDtextButton}>Excluir Conta</Text>
+          </TouchableOpacity>
 {/*----------------------------------------------------------------------------------------------------------------------*/}
-          </View>
         </View>
       </ImageBackground>
     </View>
@@ -115,43 +124,73 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   //--------------------------------------------------------------
+
   header:{
-    backgroundColor: 'rgba(60, 60, 158, 0.3)',
+    //backgroundColor: 'rgba(60, 60, 158, 0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    marginTop: 18,
   }, 
 
+  headerText:{
+    color: '#eeeeee',
+    fontWeight: 'bold',
+    marginTop: 15,
+    marginBottom: 3,
+  },
+  //--------------------------------------------------------------
+
   content:{
-    backgroundColor: 'rgba(60, 60, 158, 0.6)',
     width: '100%',
+    height: '100%',
     alignItems: 'center',
   },
 
   gradientBackground: {
     flex: 1,
     position: 'absolute',
-    top: 0,
-    left: 0,
     width: '100%',
     height: '100%',
   },
   //--------------------------------------------------------------
+  user:{
+    width: '65%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 18,
+    marginBottom: 15,
+
+    borderBottomWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.4)',
+  },
+
+  textUser:{
+    color: '#eee',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  //--------------------------------------------------------------
 
   button: {
-    width: 380,
+    width: '80%',
     height: 60,
     backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
-    marginBottom: 20,
+    marginBottom: 13,
 
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
 
     paddingHorizontal: 20,
-    alignItems: 'left',
-    justifyContent: 'center',
+    
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 
   textButton:{
-    color: 'white',
+    color: '#eee',
     fontSize: 17,
   },
 
