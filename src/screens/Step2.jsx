@@ -11,8 +11,11 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { selectionOptions2 } from './data';
+import { useTripContext } from '../config/Trip';
 
-export default function Step2() {
+export default function Step2({ route }) {
+  const { state, setOption } = useTripContext();
+  const { tripType } = route.params;
   const [pressed, setPressed] = useState(null);
 
   const handlePress = (optionId) => {
@@ -22,7 +25,26 @@ export default function Step2() {
   const navigation = useNavigation();
 
   const irparaStep3 = () => {
-    navigation.navigate('Step3');
+    if (pressed !== null) {
+      // Atualize o contexto com a escolha do usuário
+      setOption(
+        'college',
+        selectionOptions2.find((opt) => opt.id === pressed)?.text || ''
+      );
+      // Passa a escolha para Step3 através da navegação
+      navigation.navigate('Step3', {
+        tripType,
+        college:
+          selectionOptions2.find((opt) => opt.id === pressed)?.text || '',
+      });
+      console.log(
+        `user escolheu a opção: ${
+          selectionOptions2.find((opt) => opt.id === pressed)?.text || ''
+        }`
+      );
+    } else {
+      alert('Uma escolha deve ser feita');
+    }
   };
 
   const voltar = () => {
@@ -51,29 +73,24 @@ export default function Step2() {
           </View>
 
           <View style={styles.StepButtons}>
+            {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-            
-              <View>
-                {selectionOptions2.map((option) => (
-                  <TouchableOpacity
-                    key={option.id}
-                    onPress={() => handlePress(option.id)}
-                    style={[
-                      styles.buttonOption,
-                      pressed  === option.id && styles.activiOption
-                    ]}
-                  >
-                    <Image
-                      style={styles.Imagess}
-                      source={option.img}
-                    />
-                    <Text style={styles.optionButtonsText}>{option.text}</Text>
-                  </TouchableOpacity>
-                ))}
-              </View>      
-{/*----------------------------------------------------------------------------------------------------------------------*/}
-
+            <View>
+              {selectionOptions2.map((option) => (
+                <TouchableOpacity
+                  key={option.id}
+                  onPress={() => handlePress(option.id)}
+                  style={[
+                    styles.buttonOption,
+                    pressed === option.id && styles.activiOption,
+                  ]}
+                >
+                  <Image style={styles.Imagess} source={option.img} />
+                  <Text style={styles.optionButtonsText}>{option.text}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            {/*----------------------------------------------------------------------------------------------------------------------*/}
           </View>
 
           <View style={styles.buttonsBackNext}>
@@ -141,7 +158,7 @@ const styles = StyleSheet.create({
   StepButtons: {
     alignItems: 'center',
   },
-  
+
   buttonOption: {
     width: 330,
     height: 80,

@@ -11,8 +11,10 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { selectionOptions } from './data';
+import { useTripContext } from '../config/Trip';
 
 export default function Step1() {
+  const { state, setOption } = useTripContext();
   const [pressed, setPressed] = useState(null);
 
   const handlePress = (optionId) => {
@@ -20,8 +22,26 @@ export default function Step1() {
   };
 
   const navigation = useNavigation();
-  const irparaStep2 = () => {
-    navigation.navigate('Step2');
+  const irparaStep2 = (optionId) => {
+    if (pressed !== null) {
+      // Atualize o contexto com a escolha do usuário
+      setOption(
+        'tripType',
+        selectionOptions.find((opt) => opt.id === pressed)?.text || ''
+      );
+      // Passa a escolha para Step2 através da navegação
+      navigation.navigate('Step2', {
+        tripType:
+          selectionOptions.find((opt) => opt.id === pressed)?.text || '',
+      });
+      console.log(
+        `user escolheu a opção: ${
+          selectionOptions.find((opt) => opt.id === pressed)?.text || ''
+        }`
+      );
+    } else {
+      alert('Uma escolha deve ser feita');
+    }
   };
   const voltar = () => {
     navigation.goBack();

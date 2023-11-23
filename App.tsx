@@ -1,5 +1,10 @@
 import Routes from './src/routes';
+import { TripProvider } from './src/config/Trip';
 
 export default function App() {
-  return <Routes />;
+  return (
+    <TripProvider>
+      <Routes />
+    </TripProvider>
+  );
 }

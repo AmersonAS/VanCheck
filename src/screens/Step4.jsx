@@ -10,11 +10,23 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { useTripContext } from '../config/Trip';
 
-
-export default function Step3() {
+export default function Step4() {
+  const { state } = useTripContext();
   const [pressed, setPressed] = useState(false);
-
+  const {
+    tripType,
+    college,
+    boardingPoint,
+    logradouro,
+    bairro,
+    cidade,
+    estado,
+    horario,
+    numero,
+  } = state.selectedOptions;
+  console.log('Estado atual do contexto:', state.selectedOptions);
   const handlePress = () => {
     setPressed(!pressed);
   };
@@ -25,7 +37,6 @@ export default function Step3() {
     navigation.navigate('Step5');
   };
 
-  
   const voltar = () => {
     navigation.goBack();
   };
@@ -46,79 +57,77 @@ export default function Step3() {
           <View style={styles.title}>
             <Text style={styles.bTitleStep3}>Revise </Text>
             <Text style={styles.TitleStep3}>as informações</Text>
-          </View> 
-  
-          <View
-            style={styles.box}
-          >
-            <View
-              style={styles.infoBox}
-            >
-              <View
-                style={styles.informacoes}
-              >
-                <Text
-                  style={{color: '#eeeeee', fontSize: 13,}}
-                >Ponto de embarque:</Text>
+          </View>
+
+          <View style={styles.box}>
+            <View style={styles.infoBox}>
+              <View style={styles.informacoes}>
+                <Text style={{ color: '#eeeeee', fontSize: 13 }}>
+                  Ponto de embarque:
+                </Text>
                 <View style={styles.infoEmbarque}>
-                  <Image style={styles.aImage}  source={require('../../assets/Steps/Room.png')}/>
+                  <Image
+                    style={styles.aImage}
+                    source={require('../../assets/Steps/Room.png')}
+                  />
 
                   <View>
-                    <Text style={styles.aTitle}>BADU</Text>
-                    <Text style={styles.a}>Av. Pref. Braz de Lira</Text>
-                    <Text style={styles.a}>Malaquias Cardoso</Text>
-                    <Text style={styles.a}>Santa Cruz do Capibaribe - PE</Text>
-                    <Text style={styles.a}>17:40</Text>
+                    <Text style={styles.aTitle}>{boardingPoint}</Text>
+                    <Text style={styles.a}>{logradouro}</Text>
+                    <Text style={styles.a}>{bairro}</Text>
+                    <Text style={styles.a}>{`${cidade} - ${estado}`}</Text>
+                    <Text style={styles.a}>{horario}</Text>
                   </View>
                 </View>
               </View>
 
-  {/*----------------------------------------------------------------------------------------------------------------------*/}
+              {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-              <View
-                style={styles.informacoes}
-              >
-                <Text
-                  style={{color: '#eeeeee', fontSize: 13,}}
-                >Viagem:</Text>
+              <View style={styles.informacoes}>
+                <Text style={{ color: '#eeeeee', fontSize: 13 }}>Viagem:</Text>
                 <View style={styles.infoVaiVolta_Desembarque}>
-                  <Image style={styles.aImage} source={require('../../assets/Steps/Arrow_GoBackOrange.png')}/>
-                  <Text style={styles.aTitle}>Vai e volta</Text>
+                  <Image
+                    style={styles.aImage}
+                    source={require('../../assets/Steps/Arrow_GoBackOrange.png')}
+                  />
+                  <Text style={styles.aTitle}>{tripType}</Text>
                 </View>
               </View>
 
-  {/*----------------------------------------------------------------------------------------------------------------------*/}
+              {/*----------------------------------------------------------------------------------------------------------------------*/}
 
-              <View
-                style={styles.uInformacoes}
-              >
-                <Text
-                  style={{color: '#eeeeee', fontSize: 13,}}
-                >Ponto de desembarque:</Text>
+              <View style={styles.uInformacoes}>
+                <Text style={{ color: '#eeeeee', fontSize: 13 }}>
+                  Ponto de desembarque:
+                </Text>
                 <View style={styles.infoVaiVolta_Desembarque}>
-                  <Image style={styles.aImage}  source={require('../../assets/Steps/Room.png')}/>
-                  <Text style={styles.aTitle}>Unifavip Wyden</Text>
+                  <Image
+                    style={styles.aImage}
+                    source={require('../../assets/Steps/Room.png')}
+                  />
+                  <Text style={styles.aTitle}>{college}</Text>
                 </View>
               </View>
 
-  {/*----------------------------------------------------------------------------------------------------------------------*/}
+              {/*----------------------------------------------------------------------------------------------------------------------*/}
             </View>
 
-            <View
-              style={styles.imageBox}
-            >
-            <Image style={{width: 100, height: 100}}  source={require('../../assets/Van-Check-Icon.png')}/>
+            <View style={styles.imageBox}>
+              <Image
+                style={{ width: 100, height: 100 }}
+                source={require('../../assets/Van-Check-Icon.png')}
+              />
+            </View>
           </View>
 
-          </View>
-          
-          <View 
-            style={styles.buttonsBackConfirm}
-          >
+          <View style={styles.buttonsBackConfirm}>
             <TouchableOpacity style={styles.BackButton} onPress={voltar}>
               <Text style={styles.buttonText}>Voltar</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.ConfirmButton} onPress={irparaStep5}>
+            <TouchableOpacity
+              style={styles.ConfirmButton}
+              onPress={irparaStep5}
+            >
               <Text style={styles.buttonText}>Confirmar</Text>
             </TouchableOpacity>
           </View>
@@ -178,7 +187,7 @@ const styles = StyleSheet.create({
   },
 
   //--------------------------------------------------------------
-   box: {
+  box: {
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -192,20 +201,19 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255, 0.08)',
   },
 
-  infoBox:{
+  infoBox: {
     width: '100%',
   },
 
-  imageBox:{
+  imageBox: {
     flex: 1,
 
     justifyContent: 'center',
     alignItems: 'center',
-
   },
 
   //--------------------------------------------------------------
-  informacoes:{
+  informacoes: {
     paddingBottom: 20,
     marginBottom: 20,
 
@@ -214,37 +222,35 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255, 0.2)',
   },
 
-  uInformacoes:{
+  uInformacoes: {
     paddingBottom: 20,
     marginBottom: 20,
   },
 
   //--------------------------------------------------------------
 
-  infoEmbarque:{
+  infoEmbarque: {
     flexDirection: 'row',
 
     marginHorizontal: 20,
   },
 
-  infoVaiVolta_Desembarque:{
+  infoVaiVolta_Desembarque: {
     flexDirection: 'row',
     alignItems: 'center',
 
     marginHorizontal: 20,
   },
 
-  
-
   //--------------------------------------------------------------
-  aImage:{
-    width: 18, 
-    height: 18, 
-    marginRight: '2%', 
+  aImage: {
+    width: 18,
+    height: 18,
+    marginRight: '2%',
     margin: 6,
   },
-  
-  aTitle:{
+
+  aTitle: {
     color: '#F39422',
     fontSize: 23,
     fontWeight: 'bold',
