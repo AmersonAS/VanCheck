@@ -7,21 +7,31 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { firestore } from '../config/firebase';
-import { auth } from '../config/firebase';
+import { firestore, auth } from '../config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
+import { useTripContext } from '../config/Trip';
 
-
-export default function Home({ route }) {
-  const [userName, setUserName] = useState('');
+export default function Home() {
   const navigation = useNavigation();
+  const { state } = useTripContext();
+
+  const [userName, setUserName] = useState('');
+
+  const { tripChosen } = state;
+  const { boardingPoint, logradouro, bairro, cidade, estado, horario } =
+    state.selectedOptions;
 
   const irparaStep1 = () => {
     navigation.navigate('Step1');
+  };
+
+  const handleRemoveTrip = () => {
+    // Lógica para remover a viagem
+    setOption('tripChosen', false);
+    // Lógica adicional se necessário
   };
 
   useEffect(() => {
@@ -37,7 +47,7 @@ export default function Home({ route }) {
 
           if (userDocSnapshot.exists()) {
             const userData = userDocSnapshot.data();
-            setUserName(userData.name); // Ou qualquer outro campo que você queira exibir
+            setUserName(`${userData.name} ${userData.lastName}`);
           } else {
             console.log('Documento do usuário não encontrado');
           }
@@ -79,7 +89,25 @@ export default function Home({ route }) {
           </View>
 
           <ScrollView style={{ width: '100%' }}>
-            <View style={styles.ScrollTest}>{/*CONTEÚDO DA HOME*/}</View>
+            <View style={styles.ScrollTest}>
+              {tripChosen && (
+                <TouchableOpacity
+                  activeOpacity={0.9}
+                  style={styles.buttonOption}
+                >
+                  <View style={styles.NamePoint}>
+                    <Text style={styles.PointText}>{boardingPoint}</Text>
+                  </View>
+
+                  <View>
+                    <Text style={styles.a}>{logradouro}</Text>
+                    <Text style={styles.a}>{bairro}</Text>
+                    <Text style={styles.a}>{`${cidade} - ${estado}`}</Text>
+                    <Text style={styles.a}>{horario}</Text>
+                  </View>
+                </TouchableOpacity>
+              )}
+            </View>
           </ScrollView>
 
           <TouchableOpacity style={styles.embarcarButton} onPress={irparaStep1}>
@@ -105,7 +133,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 
-//---------------------------------------------------------
+  //---------------------------------------------------------
 
   header: {
     paddingTop: '10%',
@@ -148,7 +176,7 @@ const styles = StyleSheet.create({
 
     backgroundColor: 'rgba(60, 60, 158, 0.3)',
     alignItems: 'center',
-    padding: 15, 
+    padding: 15,
     width: '100%',
   },
 
@@ -180,5 +208,40 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  PointText: {
+    marginBottom: 5,
+    fontWeight: 'bold',
+    color: '#F39422',
+    fontSize: 20,
+    borderEndWidth: 1,
+    borderEndColor: '#eeeeee',
+  },
+
+  NamePoint: {
+    width: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eeeeee',
+    marginBottom: 5,
+  },
+
+  a: {
+    color: '#eeeeee',
+    fontWeight: 'regular',
+  },
+  buttonOption: {
+    width: 330,
+    height: 155,
+    backgroundColor: 'rgba(60, 60, 158, 0.3)',
+    borderRadius: 14,
+    marginBottom: 30,
+
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: 20,
   },
 });

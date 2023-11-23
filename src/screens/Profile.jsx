@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ImageBackground,
+  Image,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { auth } from '../config/firebase';
 import { useNavigation } from '@react-navigation/native';
@@ -50,7 +57,10 @@ const Profile = () => {
         <View style={styles.header}>
           <Text style={styles.headerText}>Perfil</Text>
           <TouchableOpacity style={styles.editImage}>
-            <Image style={{width:120, height:120}} source={require('../../assets/ImageUser.png')}/>
+            <Image
+              style={{ width: 120, height: 120 }}
+              source={require('../../assets/ImageUser.png')}
+            />
           </TouchableOpacity>
         </View>
 
@@ -67,37 +77,75 @@ const Profile = () => {
 
           <View style={styles.buttonConteiner}>
             <TouchableOpacity style={styles.button}>
-              <MaterialCommunityIcons name="lock" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <MaterialCommunityIcons
+                name="lock"
+                size={20}
+                color="#eeeeee"
+                style={{ marginRight: 10 }}
+              />
               <Text style={styles.textButton}>Senha</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-              <MaterialCommunityIcons name="email" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <MaterialCommunityIcons
+                name="email"
+                size={20}
+                color="#eeeeee"
+                style={{ marginRight: 10 }}
+              />
               <Text style={styles.textButton}>E-mail</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-              <MaterialCommunityIcons name="phone" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <MaterialCommunityIcons
+                name="phone"
+                size={20}
+                color="#eeeeee"
+                style={{ marginRight: 10 }}
+              />
               <Text style={styles.textButton}>Contato</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-              <MaterialCommunityIcons name="bell" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <MaterialCommunityIcons
+                name="bell"
+                size={20}
+                color="#eeeeee"
+                style={{ marginRight: 10 }}
+              />
               <Text style={styles.textButton}>Notificações</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-              <MaterialCommunityIcons name="contacts" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <MaterialCommunityIcons
+                name="contacts"
+                size={20}
+                color="#eeeeee"
+                style={{ marginRight: 10 }}
+              />
               <Text style={styles.textButton}>Contate-nos</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button} onPress={handleLogout}>
-              <MaterialCommunityIcons name="logout-variant" size={20} color="#E31144" style={{marginRight:10}}/>
+              <MaterialCommunityIcons
+                name="logout-variant"
+                size={20}
+                color="#E31144"
+                style={{ marginRight: 10 }}
+              />
               <Text style={styles.REDtextButton}>Sair da conta</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} onPress={handleDeleteCurrentUser}>
-              <AntDesign name="delete" size={20} color="#E31144" style={{marginRight:10}}/>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleDeleteCurrentUser}
+            >
+              <AntDesign
+                name="delete"
+                size={20}
+                color="#E31144"
+                style={{ marginRight: 10 }}
+              />
               <Text style={styles.REDtextButton}>Excluir Conta</Text>
             </TouchableOpacity>
           </View>
@@ -110,7 +158,7 @@ const Profile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#1A1B28',
+    backgroundColor: '#1A1B28',
   },
 
   backgroundImage: {
@@ -119,15 +167,15 @@ const styles = StyleSheet.create({
   },
   //--------------------------------------------------------------
 
-  header:{
+  header: {
     //backgroundColor: 'rgba(60, 60, 158, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
     marginTop: 18,
-  }, 
+  },
 
-  headerText:{
+  headerText: {
     color: '#eeeeee',
     fontWeight: 'bold',
     marginTop: 15,
@@ -135,7 +183,7 @@ const styles = StyleSheet.create({
   },
   //--------------------------------------------------------------
 
-  content:{
+  content: {
     flex: 1,
     width: '100%',
     height: '100%',
@@ -147,11 +195,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    borderTopLeftRadius: 14, 
+    borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
   },
   //--------------------------------------------------------------
-  user:{
+  user: {
     width: '80%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -162,13 +210,13 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255, 0.4)',
   },
 
-  textUser:{
+  textUser: {
     color: '#eee',
     fontSize: 25,
     fontWeight: 'bold',
   },
   //--------------------------------------------------------------
-  buttonConteiner:{
+  buttonConteiner: {
     flex: 1,
     width: '100%',
     marginBottom: '25%',
@@ -187,22 +235,22 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255, 0.08)',
 
     paddingHorizontal: 20,
-    
+
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
 
-  textButton:{
+  textButton: {
     color: '#eee',
     fontSize: 17,
   },
 
-  REDtextButton:{
+  REDtextButton: {
     color: '#E31144',
     fontSize: 17,
     fontWeight: 'bold',
-  }
-})
+  },
+});
 
 export default Profile;

@@ -10,9 +10,10 @@ export const TripProvider = ({ children }) => {
       college: null,
       boardingPoint: null,
     },
+    tripChosen: false,
   };
 
-  const reducer = (state, action) => {
+  const reducer = (state = initialState, action) => {
     switch (action.type) {
       case 'SET_SELECTED_OPTION':
         return {
@@ -21,6 +22,7 @@ export const TripProvider = ({ children }) => {
             ...state.selectedOptions,
             [action.payload.field]: action.payload.value,
           },
+          tripChosen: true,
         };
       default:
         return state;

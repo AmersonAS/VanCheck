@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import { selectionOptions, selectionOptions2, selectionOptions3 } from './data';
+import { selectionOptions3 } from './data';
 import { collection, addDoc } from 'firebase/firestore';
 import { firestore, auth } from '../config/firebase';
 import { useTripContext } from '../config/Trip';
@@ -28,6 +28,11 @@ export default function Step3({ route }) {
   const navigation = useNavigation();
 
   const irparaStep4 = async () => {
+    const currentUser = auth.currentUser;
+
+    if (currentUser) {
+      console.log('Usuário autenticado:', currentUser.uid);
+    }
     if (pressed !== null) {
       const selectedOption =
         selectionOptions3.find((opt) => opt.id === pressed) || {};
