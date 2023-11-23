@@ -31,8 +31,71 @@ export default function Notifications(){
           source={require('../../assets/BackImage-Notifications.png')}
           style={styles.backImage}
         >
-          <ScrollView style={{ width: '100%' }}>
+          <ScrollView style={styles.ScrollView}>
             <View style={styles.ScrollTest}>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.notification}>
+                <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <AntDesign name="delete" size={22} color="#E31144" style={{alignSelf:'flex-end', marginTop:15}}/>
+                </TouchableOpacity>
+              </View>
 
               <View style={styles.notification}>
                 <Text style={styles.textNotification}>- Você possui uma viagem marcada às 17:40, no posto BADU. Não se esqueça!</Text>
@@ -112,6 +175,11 @@ const styles = StyleSheet.create({
   },
 
   //---------------------------------------------------------
+
+  ScrollView:{
+    width: '100%',
+    marginBottom: '25%',
+  },
 
   ScrollTest: {
     paddingTop: '3%',
