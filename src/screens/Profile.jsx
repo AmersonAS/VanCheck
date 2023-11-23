@@ -64,49 +64,43 @@ const Profile = () => {
           <View style={styles.user}>
             <Text style={styles.textUser}>Nome Sobrenome</Text>
           </View>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
 
-          <TouchableOpacity style={styles.button}>
-            <MaterialCommunityIcons name="lock" size={20} color="#eeeeee" style={{marginRight:10}}/>
-            <Text style={styles.textButton}>Senha</Text>
-          </TouchableOpacity>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+          <View style={styles.buttonConteiner}>
+            <TouchableOpacity style={styles.button}>
+              <MaterialCommunityIcons name="lock" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <Text style={styles.textButton}>Senha</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button}>
-            <MaterialCommunityIcons name="email" size={20} color="#eeeeee" style={{marginRight:10}}/>
-            <Text style={styles.textButton}>E-mail</Text>
-          </TouchableOpacity>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+            <TouchableOpacity style={styles.button}>
+              <MaterialCommunityIcons name="email" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <Text style={styles.textButton}>E-mail</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button}>
-            <MaterialCommunityIcons name="phone" size={20} color="#eeeeee" style={{marginRight:10}}/>
-            <Text style={styles.textButton}>Contato</Text>
-          </TouchableOpacity>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+            <TouchableOpacity style={styles.button}>
+              <MaterialCommunityIcons name="phone" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <Text style={styles.textButton}>Contato</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button}>
-            <MaterialCommunityIcons name="bell" size={20} color="#eeeeee" style={{marginRight:10}}/>
-            <Text style={styles.textButton}>Notificações</Text>
-          </TouchableOpacity>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+            <TouchableOpacity style={styles.button}>
+              <MaterialCommunityIcons name="bell" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <Text style={styles.textButton}>Notificações</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button}>
-            <MaterialCommunityIcons name="contacts" size={20} color="#eeeeee" style={{marginRight:10}}/>
-            <Text style={styles.textButton}>Contate-nos</Text>
-          </TouchableOpacity>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+            <TouchableOpacity style={styles.button}>
+              <MaterialCommunityIcons name="contacts" size={20} color="#eeeeee" style={{marginRight:10}}/>
+              <Text style={styles.textButton}>Contate-nos</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={handleLogout}>
-            <MaterialCommunityIcons name="logout-variant" size={20} color="#E31144" style={{marginRight:10}}/>
-            <Text style={styles.REDtextButton}>Sair da conta</Text>
-          </TouchableOpacity>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+            <TouchableOpacity style={styles.button} onPress={handleLogout}>
+              <MaterialCommunityIcons name="logout-variant" size={20} color="#E31144" style={{marginRight:10}}/>
+              <Text style={styles.REDtextButton}>Sair da conta</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={handleDeleteCurrentUser}>
-            <AntDesign name="delete" size={20} color="#E31144" style={{marginRight:10}}/>
-            <Text style={styles.REDtextButton}>Excluir Conta</Text>
-          </TouchableOpacity>
-{/*----------------------------------------------------------------------------------------------------------------------*/}
+            <TouchableOpacity style={styles.button} onPress={handleDeleteCurrentUser}>
+              <AntDesign name="delete" size={20} color="#E31144" style={{marginRight:10}}/>
+              <Text style={styles.REDtextButton}>Excluir Conta</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -142,6 +136,7 @@ const styles = StyleSheet.create({
   //--------------------------------------------------------------
 
   content:{
+    flex: 1,
     width: '100%',
     height: '100%',
     alignItems: 'center',
@@ -152,10 +147,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
+    borderTopLeftRadius: 14, 
+    borderTopRightRadius: 14,
   },
   //--------------------------------------------------------------
   user:{
-    width: '65%',
+    width: '80%',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 18,
@@ -171,13 +168,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   //--------------------------------------------------------------
+  buttonConteiner:{
+    flex: 1,
+    width: '100%',
+    marginBottom: '20%',
+
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
 
   button: {
     width: '80%',
     height: 60,
     backgroundColor: 'rgba(60, 60, 158, 0.3)',
     borderRadius: 14,
-    marginBottom: 13,
 
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
